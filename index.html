@@ -732,12 +732,33 @@
     color: var(--text-muted);
     font-weight: 600;
     font-style: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
   }
+  .philo-intro .attr-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    opacity: 0.92;
+  }
+  .philo-intro .attr-avatar[data-fallback] { display: none; }
   .philo-intro .attr .name {
     color: var(--text);
     font-weight: 700;
   }
-  .philo-intro .attr::before { content: 'Citat af: '; color: var(--text-dim); font-weight: 600; }
+  .philo-intro .attr .label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1px;
+    text-transform: uppercase;
+  }
 
   @media (max-width: 640px) {
     .philo-intro p { font-size: 17px; }
@@ -1233,7 +1254,10 @@
   <div class="philo-intro quote">
     <p>Festivalen skabes ikke af teknologi, men af mennesker, musik og øjeblikke. Platformen er bygget på ét princip: <strong>den skal forsvinde for dét, der tæller</strong>.</p>
     <p class="soft">Gæsten skal være til stede. I skal skabe oplevelsen. Systemet skal bare virke.</p>
-    <div class="attr"><span class="name">Jakob Højgård</span> // CEO // LiveCloud</div>
+    <div class="attr">
+      <img class="attr-avatar" src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
+      <span><span class="label">Citat af</span><span class="name">Jakob Højgård</span> // CEO // LiveCloud</span>
+    </div>
   </div>
 
   <!-- ==== VALUE PROP CARD ==== -->
@@ -1705,7 +1729,10 @@
   <div class="philo-intro quote" style="margin-bottom: 32px;">
     <p>Platformen virker bedst, når <strong>ingen tænker over den</strong>. Når festivalen bare flyder, når gæsterne bare er til stede, når regnskabet bare stemmer.</p>
     <p class="soft">Det er dét, vi bygger for. Og det er dét, vi gerne vil vise jer.</p>
-    <div class="attr"><span class="name">Jakob Højgård</span> // CEO // LiveCloud</div>
+    <div class="attr">
+      <img class="attr-avatar" src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
+      <span><span class="label">Citat af</span><span class="name">Jakob Højgård</span> // CEO // LiveCloud</span>
+    </div>
   </div>
 
   <!-- ==== CTA ==== -->
