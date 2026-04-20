@@ -698,9 +698,48 @@
     background-clip: text;
     font-weight: 700;
   }
+
+  /* Quote variant (with attribution) */
+  .philo-intro.quote {
+    position: relative;
+    padding-top: 56px;
+  }
+  .philo-intro.quote::before {
+    content: '\201C'; /* “ */
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 120px;
+    line-height: 1;
+    font-weight: 700;
+    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .philo-intro .attr {
+    margin-top: 22px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-style: normal;
+  }
+  .philo-intro .attr .name {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .philo-intro .attr::before { content: '— '; color: var(--text-dim); }
+
   @media (max-width: 640px) {
     .philo-intro p { font-size: 17px; }
     .philo-intro p.soft { font-size: 14px; }
+    .philo-intro.quote { padding-top: 44px; }
+    .philo-intro.quote::before { font-size: 90px; top: -4px; }
   }
 
   /* ===== Value-prop card (hero follow-up) ===== */
@@ -1111,10 +1150,11 @@
     </a>
   </div>
 
-  <!-- ==== PHILOSOPHY INTRO (early anchor) ==== -->
-  <div class="philo-intro">
+  <!-- ==== PHILOSOPHY INTRO (early anchor, as quote) ==== -->
+  <div class="philo-intro quote">
     <p>Festivalen skabes ikke af teknologi, men af mennesker, musik og øjeblikke. Platformen er bygget på ét princip: <strong>den skal forsvinde for dét, der tæller</strong>.</p>
     <p class="soft">Gæsten skal være til stede. I skal skabe oplevelsen. Systemet skal bare virke.</p>
+    <div class="attr"><span class="name">Jakob</span>, LiveCloud</div>
   </div>
 
   <!-- ==== VALUE PROP CARD ==== -->
