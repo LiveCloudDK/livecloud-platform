@@ -518,6 +518,246 @@
     border-color: var(--accent);
   }
 
+  /* ===== Value-prop card (hero follow-up) ===== */
+  .valueprop {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 760px) {
+    .valueprop { grid-template-columns: 1fr; padding: 28px 24px; gap: 20px; }
+  }
+  .valueprop h2 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .valueprop h2 .accent {
+    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .valueprop .lead {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .valueprop .lead strong { color: var(--text); font-weight: 600; }
+  .bullets {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 540px) { .bullets { grid-template-columns: 1fr; } }
+  .bullets li {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.45;
+    padding: 12px 14px 12px 36px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .bullets li::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-green), var(--accent));
+    box-shadow: 0 0 12px rgba(92, 183, 122, 0.4);
+  }
+  .bullets li::after {
+    content: '';
+    position: absolute;
+    left: 15px; top: 50%;
+    transform: translate(0, -55%) rotate(45deg);
+    width: 4px; height: 8px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+  }
+
+  /* ===== Benefit split (two-column narrative + bullets) ===== */
+  .benefit-split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .benefit-split { grid-template-columns: 1fr; gap: 28px; }
+  }
+  .benefit-split .narrative p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .benefit-split .narrative p:last-child { margin-bottom: 0; }
+  .benefit-split .narrative strong { color: var(--text); font-weight: 600; }
+
+  .outcome-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 26px;
+  }
+  .outcome-box .outcome-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .outcome-box ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .outcome-box ul li {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 24px;
+    position: relative;
+    font-weight: 500;
+  }
+  .outcome-box ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.15);
+    border: 2px solid var(--accent);
+  }
+
+  /* ===== Dedicated Beats section ===== */
+  .beats-section {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.06), rgba(244, 114, 182, 0.05));
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    border-radius: 22px;
+    padding: 44px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .beats-section { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; }
+  }
+  .beats-section h2 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .beats-section h2 .accent {
+    background: linear-gradient(135deg, var(--accent-amber), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .beats-section .lead {
+    font-size: 16px; color: var(--text); font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .beats-section p {
+    font-size: 14px; color: var(--text-muted);
+    line-height: 1.65; margin-bottom: 12px;
+  }
+  .beats-section .close {
+    font-size: 14px; color: var(--text); font-weight: 600;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid rgba(245, 158, 11, 0.2);
+  }
+  .beats-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .beats-col h4 {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent-amber);
+    margin-bottom: 10px;
+  }
+  .beats-col ul {
+    list-style: none; padding: 0;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .beats-col ul li {
+    font-size: 14px; color: var(--text);
+    padding: 10px 14px 10px 30px;
+    background: rgba(10, 12, 19, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .beats-col ul li::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 50%;
+    transform: translateY(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+  }
+
+  /* ===== Security section ===== */
+  .security-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 900px) {
+    .security-wrap { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; }
+  }
+  .security-wrap h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .security-wrap h2 .accent {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .security-wrap .lead {
+    font-size: 16px; color: var(--text); font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .security-wrap p {
+    font-size: 14px; color: var(--text-muted);
+    line-height: 1.65; margin-bottom: 12px;
+  }
+
   /* ===== Manifesto section (pink/coral like the festival slide) ===== */
   .manifesto {
     background: linear-gradient(135deg, #f5b5d4 0%, #efa6c8 100%);
@@ -688,6 +928,20 @@
     </a>
   </div>
 
+  <!-- ==== VALUE PROP CARD ==== -->
+  <div class="valueprop">
+    <div>
+      <h2>Én platform. Én gæsteoplevelse. <span class="accent">Fuld kontrol.</span></h2>
+      <p class="lead">LiveCloud samler billet, betaling, salg og kommunikation i jeres egen app og jeres egen storefront. <strong>Alt kører i jeres navn, med jeres brand, direkte til jeres gæster.</strong></p>
+    </div>
+    <ul class="bullets">
+      <li>Øget omsætning per gæst</li>
+      <li>Mindre friktion i flow og betaling</li>
+      <li>Real-time indsigt i hele festivalen</li>
+      <li>Fuld kontrol over gæster, data og brand</li>
+    </ul>
+  </div>
+
   <!-- ==== STATS STRIP — platformens DNA ==== -->
   <div class="stats-strip">
     <div class="stat-item">
@@ -757,6 +1011,29 @@
           <li>Realtid check-in-overblik</li>
           <li>CSV-import af modtagere</li>
           <li>Faktura-betaling mulig</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== JERES APP / BRAND OWNERSHIP ==== -->
+  <div class="section">
+    <div class="section-label">Jeres brand, jeres relation</div>
+    <h2 class="section-title">Jeres app. Jeres salgskanal. Jeres gæster.</h2>
+    <p class="section-lead">LiveCloud leverer infrastrukturen. I ejer oplevelsen. Gæsterne møder jeres festival gennem jeres egen app og jeres egen storefront, brandet i jeres navn og identitet. Vi står ikke mellem jer og jeres gæster.</p>
+    <div class="benefit-split">
+      <div class="narrative">
+        <p>Det betyder, at I kan <strong>kommunikere direkte og personligt</strong> til den enkelte gæst, før, under og efter festivalen.</p>
+        <p>I kan <strong>tilpasse indhold og tilbud</strong> til den enkelte gæst baseret på adfærd og kontekst, ikke som massebeskeder, men som relevante updates og information.</p>
+        <p>Og I kan <strong>opbygge relationer</strong>, der rækker længere end én sæson. Det er jeres relation. Vi driver systemet bag.</p>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Det skaber</div>
+        <ul>
+          <li>Højere engagement og flere aktive brugere</li>
+          <li>Flere køb per gæst gennem relevante tilbud</li>
+          <li>Bedre gæsteoplevelser før og under festivalen</li>
+          <li>En brand-relation, der består mellem sæsoner</li>
         </ul>
       </div>
     </div>
@@ -870,6 +1147,82 @@
         <div class="feat-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <h4>Sikkerhed og GDPR</h4>
         <p>MitID-identifikation. Kortdata hos certificeret partner. Compliance out of the box.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== OUTCOMES: MERE FLOW + DRIFT ==== -->
+  <div class="section">
+    <div class="section-label">Udbytte</div>
+    <h2 class="section-title">Mere flow. Mere salg. Mindre kompleksitet.</h2>
+    <p class="section-lead">Når billet, betaling og salg hænger sammen i ét system, forsvinder flaskehalsene. Gæsterne bruger mindre tid på at vente og mere tid på at købe og opleve. Og festivaldriften stopper ikke, bare fordi netværket gør.</p>
+    <div class="benefit-split">
+      <div class="narrative">
+        <p><strong>For jer som arrangør</strong> betyder det højere omsætning per gæst, færre manuelle processer, mindre efterarbejde og bedre beslutninger undervejs.</p>
+        <p><strong>Drift, der holder:</strong> LiveCloud er bygget til at håndtere ustabilt netværk og spidsbelastning. Salg i boderne kan fortsætte, selv ved midlertidige udfald, og synkroniseres automatisk, når forbindelsen er tilbage. Ingen stop i salget, ingen manuelle nødløsninger, fuld kontrol også efter peak.</p>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Det betyder</div>
+        <ul>
+          <li>Højere omsætning per gæst</li>
+          <li>Færre manuelle processer og fejl</li>
+          <li>Ingen nedetid ved ustabilt netværk</li>
+          <li>Fuld kontrol og overblik, også efter peak</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== BEATS DEDICATED ==== -->
+  <div class="section">
+    <div class="beats-section">
+      <div>
+        <div class="section-label" style="color: var(--accent-amber);">Digital valuta</div>
+        <h2>Beats. <span class="accent">Motoren bag drift og omsætning.</span></h2>
+        <p class="lead">Hurtigere betaling. Mere salg. Bedre kontrol.</p>
+        <p>Beats er festivalens digitale valuta, integreret direkte i gæstens wallet. Gæsten fylder op én gang og betaler derefter med få klik, i alle barer og boder.</p>
+        <p>Resultatet er hurtigere ekspedition, kortere køer og højere forbrug per gæst. Ingen kontanthåndtering, ingen manuel afstemning, ingen blinde vinkler i regnskabet.</p>
+        <p class="close">Beats er ikke bare betaling. Det er en motor for både drift og omsætning, og fuld indsigt i omsætning i real-time.</p>
+      </div>
+      <div class="beats-columns">
+        <div class="beats-col">
+          <h4>For gæsten</h4>
+          <ul>
+            <li>Hurtigere ekspedition i barer og boder</li>
+            <li>Kortere køer og bedre flow på pladsen</li>
+            <li>Automatisk optankning, altid klar til næste runde</li>
+          </ul>
+        </div>
+        <div class="beats-col">
+          <h4>For jer som arrangør</h4>
+          <ul>
+            <li>Ingen kontanthåndtering på pladsen</li>
+            <li>Automatisk afstemning, 100% match-rate</li>
+            <li>Højere forbrug per gæst, dokumenteret</li>
+            <li>Real-time omsætningsdata, per bar og produkt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== SIKKERHED & COMPLIANCE ==== -->
+  <div class="section">
+    <div class="security-wrap">
+      <div>
+        <div class="section-label">Sikkerhed &amp; compliance</div>
+        <h2>Sikker data. <span class="accent">Sikker betaling.</span></h2>
+        <p class="lead">LiveCloud er bygget med fokus på datasikkerhed og ansvarlig håndtering af gæsteoplysninger.</p>
+        <p>Vi arbejder i overensstemmelse med <strong>GDPR</strong> og med klare roller mellem dataansvarlig og databehandler. Alle betalinger håndteres via etablerede partnere som <strong>Swedbank</strong> og certificerede indløsere. Vi håndterer ikke kortdata selv, men bygger oven på gennemtestet betalingsinfrastruktur.</p>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Det giver jer</div>
+        <ul>
+          <li>Høj sikkerhed for gæsternes data</li>
+          <li>Stabil og godkendt betalingshåndtering</li>
+          <li>Lavere kompleksitet og risiko som arrangør</li>
+          <li>Klare ansvarslinjer ved revision</li>
+        </ul>
       </div>
     </div>
   </div>
