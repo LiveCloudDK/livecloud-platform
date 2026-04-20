@@ -246,19 +246,21 @@
   }
   .card ul {
     list-style: none; padding: 0; margin-top: 12px;
+    display: flex; flex-direction: column; gap: 8px;
   }
   .card ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     font-size: 13px;
     color: var(--text-muted);
-    padding: 5px 0 5px 18px;
-    position: relative;
     line-height: 1.5;
   }
   .card ul li::before {
     content: '';
-    position: absolute;
-    left: 0; top: 12px;
+    flex-shrink: 0;
     width: 6px; height: 6px;
+    margin-top: 7px;
     border-radius: 50%;
     background: var(--card-accent, var(--accent));
   }
@@ -518,6 +520,43 @@
     border-color: var(--accent);
   }
 
+  /* ===== Philosophy intro (early, quiet) ===== */
+  .philo-intro {
+    max-width: 720px;
+    margin: 0 auto 56px;
+    text-align: center;
+    padding: 36px 24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .philo-intro p {
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .philo-intro p:last-child { margin-bottom: 0; }
+  .philo-intro p.soft {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 400;
+    font-style: italic;
+    max-width: 540px;
+    margin-left: auto; margin-right: auto;
+  }
+  .philo-intro strong {
+    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+  @media (max-width: 640px) {
+    .philo-intro p { font-size: 17px; }
+    .philo-intro p.soft { font-size: 14px; }
+  }
+
   /* ===== Value-prop card (hero follow-up) ===== */
   .valueprop {
     background: var(--bg-card);
@@ -561,34 +600,31 @@
   }
   @media (max-width: 540px) { .bullets { grid-template-columns: 1fr; } }
   .bullets li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 14px;
     color: var(--text);
     line-height: 1.45;
-    padding: 12px 14px 12px 36px;
-    position: relative;
+    padding: 12px 14px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border);
     border-radius: 10px;
     font-weight: 500;
   }
   .bullets li::before {
-    content: '';
-    position: absolute;
-    left: 12px; top: 50%;
-    transform: translateY(-50%);
-    width: 16px; height: 16px;
+    content: '✓';
+    flex-shrink: 0;
+    width: 20px; height: 20px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent-green), var(--accent));
-    box-shadow: 0 0 12px rgba(92, 183, 122, 0.4);
-  }
-  .bullets li::after {
-    content: '';
-    position: absolute;
-    left: 15px; top: 50%;
-    transform: translate(0, -55%) rotate(45deg);
-    width: 4px; height: 8px;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(92, 183, 122, 0.3);
   }
 
   /* ===== Benefit split (two-column narrative + bullets) ===== */
@@ -629,21 +665,22 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   .outcome-box ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     font-size: 14px;
     color: var(--text);
     line-height: 1.5;
-    padding-left: 24px;
-    position: relative;
     font-weight: 500;
   }
   .outcome-box ul li::before {
     content: '';
-    position: absolute;
-    left: 0; top: 8px;
+    flex-shrink: 0;
     width: 12px; height: 12px;
+    margin-top: 6px;
     border-radius: 50%;
     background: rgba(96, 165, 250, 0.15);
     border: 2px solid var(--accent);
@@ -920,12 +957,18 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       Festival-platformen, bygget af festivalfolk
     </div>
-    <h1>Det bedste system er det,<br><span class="accent">gæsten aldrig ser eller tænker over</span>.</h1>
+    <h1>Det bedste system er det,<br><span class="accent">gæsten aldrig ser eller tænker over</span></h1>
     <p class="hero-sub">En festival handler ikke om systemer. Den handler om mennesker, musik og fantastiske øjeblikke. Vi bygger systemerne, så I kan bruge tiden på at skabe rammerne til alt det, gæsterne rent faktisk husker.</p>
     <a href="#kontakt" class="hero-cta">
       Book en demo
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+  </div>
+
+  <!-- ==== PHILOSOPHY INTRO (early anchor) ==== -->
+  <div class="philo-intro">
+    <p>Festivalen skabes ikke af teknologi, men af mennesker, musik og øjeblikke. Platformen er bygget på ét princip: <strong>den skal forsvinde for dét, der tæller</strong>.</p>
+    <p class="soft">Gæsten skal være til stede. I skal skabe oplevelsen. Systemet skal bare virke.</p>
   </div>
 
   <!-- ==== VALUE PROP CARD ==== -->
@@ -935,10 +978,10 @@
       <p class="lead">LiveCloud samler billet, betaling, salg og kommunikation i jeres egen app og jeres egen storefront. <strong>Alt kører i jeres navn, med jeres brand, direkte til jeres gæster.</strong></p>
     </div>
     <ul class="bullets">
-      <li>Øget omsætning per gæst</li>
-      <li>Mindre friktion i flow og betaling</li>
-      <li>Real-time indsigt i hele festivalen</li>
-      <li>Fuld kontrol over gæster, data og brand</li>
+      <li>Kortere køer, gladere gæster, højere omsætning</li>
+      <li>En app gæsten allerede forstår fra klik ét</li>
+      <li>Real-time indsigt i gæstens rejse gennem festivalen</li>
+      <li>Direkte brand-relation uden mellemled</li>
     </ul>
   </div>
 
@@ -1023,16 +1066,16 @@
     <p class="section-lead">LiveCloud leverer infrastrukturen. I ejer oplevelsen. Gæsterne møder jeres festival gennem jeres egen app og jeres egen storefront, brandet i jeres navn og identitet. Vi står ikke mellem jer og jeres gæster.</p>
     <div class="benefit-split">
       <div class="narrative">
-        <p>Det betyder, at I kan <strong>kommunikere direkte og personligt</strong> til den enkelte gæst, før, under og efter festivalen.</p>
-        <p>I kan <strong>tilpasse indhold og tilbud</strong> til den enkelte gæst baseret på adfærd og kontekst, ikke som massebeskeder, men som relevante updates og information.</p>
-        <p>Og I kan <strong>opbygge relationer</strong>, der rækker længere end én sæson. Det er jeres relation. Vi driver systemet bag.</p>
+        <p>Gæsten møder jeres festival, ikke en mellemmand. I kommunikerer <strong>direkte og personligt</strong> til den enkelte gæst, før, under og efter festivalen.</p>
+        <p>Hver gæst får <strong>indhold og tilbud, der rammer plet</strong>, baseret på adfærd og kontekst. Ikke massebeskeder, men relevante updates, der gør den enkelte gæsts oplevelse bedre.</p>
+        <p>Relationen mellem jeres brand og jeres gæster rækker længere end én sæson. <strong>Det er jeres relation</strong>. Vi driver systemet bag.</p>
       </div>
       <div class="outcome-box">
         <div class="outcome-eyebrow">Det skaber</div>
         <ul>
-          <li>Højere engagement og flere aktive brugere</li>
-          <li>Flere køb per gæst gennem relevante tilbud</li>
-          <li>Bedre gæsteoplevelser før og under festivalen</li>
+          <li>Gæster, der møder jeres brand direkte, ikke en mellemmand</li>
+          <li>Relevante tilbud, der rammer den enkelte gæst</li>
+          <li>Oplevelser gæsten husker, før, under og efter festivalen</li>
           <li>En brand-relation, der består mellem sæsoner</li>
         </ul>
       </div>
@@ -1158,16 +1201,16 @@
     <p class="section-lead">Når billet, betaling og salg hænger sammen i ét system, forsvinder flaskehalsene. Gæsterne bruger mindre tid på at vente og mere tid på at købe og opleve. Og festivaldriften stopper ikke, bare fordi netværket gør.</p>
     <div class="benefit-split">
       <div class="narrative">
-        <p><strong>For jer som arrangør</strong> betyder det højere omsætning per gæst, færre manuelle processer, mindre efterarbejde og bedre beslutninger undervejs.</p>
-        <p><strong>Drift, der holder:</strong> LiveCloud er bygget til at håndtere ustabilt netværk og spidsbelastning. Salg i boderne kan fortsætte, selv ved midlertidige udfald, og synkroniseres automatisk, når forbindelsen er tilbage. Ingen stop i salget, ingen manuelle nødløsninger, fuld kontrol også efter peak.</p>
+        <p>Gæsten mærker det som <strong>færre køer, hurtigere betalinger og en oplevelse, der bare flyder</strong>. For jer betyder det højere omsætning per gæst, færre manuelle processer og bedre beslutninger undervejs.</p>
+        <p><strong>Drift, der holder:</strong> LiveCloud er bygget til at håndtere ustabilt netværk og spidsbelastning. Gæsten mærker aldrig forskel. Salget i boderne fortsætter, selv ved midlertidige udfald, og synkroniseres automatisk, når forbindelsen er tilbage. Ingen stop, ingen manuelle nødløsninger, fuld kontrol også efter peak.</p>
       </div>
       <div class="outcome-box">
         <div class="outcome-eyebrow">Det betyder</div>
         <ul>
-          <li>Højere omsætning per gæst</li>
-          <li>Færre manuelle processer og fejl</li>
-          <li>Ingen nedetid ved ustabilt netværk</li>
-          <li>Fuld kontrol og overblik, også efter peak</li>
+          <li>Gæsterne bruger tiden på oplevelsen, ikke på at vente</li>
+          <li>Færre manuelle processer og fejl i kulissen</li>
+          <li>Ingen nedetid, gæsten mærker ikke forskel</li>
+          <li>Fuld kontrol for jer, sømløst for gæsten</li>
         </ul>
       </div>
     </div>
