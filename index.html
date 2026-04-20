@@ -48,6 +48,10 @@
     overflow-x: hidden;
   }
 
+  /* Prevent widow words on headings + lead paragraphs. Modern browsers. */
+  h1, h2, h3, h4 { text-wrap: balance; }
+  .hero-sub, .section-lead, .philo-intro p, .manifesto p, .beats-section p, .security-wrap p { text-wrap: pretty; }
+
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
   /* ==== TOP NAV ==== */
@@ -250,7 +254,7 @@
   }
   .card ul li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     font-size: 13px;
     color: var(--text-muted);
@@ -260,7 +264,6 @@
     content: '';
     flex-shrink: 0;
     width: 6px; height: 6px;
-    margin-top: 7px;
     border-radius: 50%;
     background: var(--card-accent, var(--accent));
   }
@@ -854,7 +857,7 @@
   }
   .outcome-box ul li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     font-size: 14px;
     color: var(--text);
@@ -865,7 +868,6 @@
     content: '';
     flex-shrink: 0;
     width: 12px; height: 12px;
-    margin-top: 6px;
     border-radius: 50%;
     background: rgba(96, 165, 250, 0.15);
     border: 2px solid var(--accent);
@@ -1007,7 +1009,7 @@
   }
   .fs-col ul li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     font-size: 14px;
     color: var(--text-muted);
@@ -1017,7 +1019,6 @@
     content: '';
     flex-shrink: 0;
     width: 6px; height: 6px;
-    margin-top: 7px;
     border-radius: 50%;
     background: var(--fs-accent);
   }
@@ -1579,16 +1580,20 @@
     <div class="security-wrap">
       <div>
         <div class="section-label">Sikkerhed &amp; compliance</div>
-        <h2>Sikker data. <span class="accent">Sikker betaling.</span></h2>
-        <p class="lead">LiveCloud er bygget med fokus på datasikkerhed og ansvarlig håndtering af gæsteoplysninger.</p>
-        <p>Vi arbejder i overensstemmelse med <strong>GDPR</strong> og med klare roller mellem dataansvarlig og databehandler. Alle betalinger håndteres via etablerede partnere som <strong>Swedbank</strong> og certificerede indløsere. Vi håndterer ikke kortdata selv, men bygger oven på gennemtestet betalingsinfrastruktur.</p>
+        <h2>Jeres data. <span class="accent">Jeres platform.</span></h2>
+        <p class="lead">LiveCloud er bygget med fokus på datasikkerhed, dataejerskab og ansvarlig håndtering af gæsteoplysninger.</p>
+        <p><strong>Al data tilhører festivalen</strong>, ikke os. Data opbevares sikkert på et datacenter i EU. Vi arbejder i overensstemmelse med <strong>GDPR</strong>, og databehandler- og underdatabehandler-aftaler er på plads og klar som en del af onboardingen.</p>
+        <p>Vi har <strong>ingen afhængighed af 3. parts leverandører</strong> og ingen dyre licensomkostninger. Platformen er vores egen, fra kerne til API, så der er ingen skjulte gebyrer, der vokser jo større I bliver, og ingen gråzoner om hvem der ejer hvad.</p>
+        <p>Alle betalinger håndteres via etablerede partnere som <strong>Swedbank</strong> og certificerede indløsere. Vi håndterer ikke kortdata selv, men bygger oven på gennemtestet betalingsinfrastruktur.</p>
       </div>
       <div class="outcome-box">
         <div class="outcome-eyebrow">Det giver jer</div>
         <ul>
-          <li>Høj sikkerhed for gæsternes data</li>
+          <li>Al data tilhører jer, opbevaret på EU-datacenter</li>
+          <li>DPA og underdatabehandleraftaler klar fra start</li>
+          <li>Ingen 3. parts leverandører at koordinere</li>
+          <li>Ingen skjulte licensomkostninger</li>
           <li>Stabil og godkendt betalingshåndtering</li>
-          <li>Lavere kompleksitet og risiko som arrangør</li>
           <li>Klare ansvarslinjer ved revision</li>
         </ul>
       </div>
