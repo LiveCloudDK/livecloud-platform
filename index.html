@@ -518,6 +518,123 @@
     border-color: var(--accent);
   }
 
+  /* ===== Manifesto section (pink/coral like the festival slide) ===== */
+  .manifesto {
+    background: linear-gradient(135deg, #f5b5d4 0%, #efa6c8 100%);
+    border-radius: 24px;
+    padding: 64px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -10%; width: 60%; height: 160%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .manifesto-inner {
+    max-width: 760px;
+    position: relative;
+  }
+  .manifesto-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #9c2a1a;
+    padding: 5px 14px;
+    background: rgba(156, 42, 26, 0.12);
+    border-radius: 14px;
+    margin-bottom: 22px;
+  }
+  .manifesto h2 {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.1;
+    color: #b73e16;
+    margin-bottom: 28px;
+  }
+  .manifesto p {
+    font-size: 19px;
+    line-height: 1.55;
+    color: #9c2a1a;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .manifesto p:last-child { margin-bottom: 0; }
+  .manifesto strong {
+    color: #7a1a0a;
+    font-weight: 800;
+  }
+  .manifesto em { font-style: italic; }
+  .manifesto-signoff {
+    margin-top: 32px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: rgba(156, 42, 26, 0.6);
+  }
+
+  /* ===== Ringsted feature (reference customer) ===== */
+  .ringsted-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .ringsted-feature { grid-template-columns: 1fr; padding: 32px 28px; gap: 28px; }
+  }
+  .ringsted-feature h3 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .ringsted-feature p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .ringsted-feature p:last-child { margin-bottom: 0; }
+  .ringsted-feature strong { color: var(--text); }
+  .ringsted-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .ringsted-stat {
+    background: rgba(244, 114, 182, 0.06);
+    border: 1px solid rgba(244, 114, 182, 0.2);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .ringsted-stat .num {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.4px;
+    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2px;
+  }
+  .ringsted-stat .lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
   .footer {
     text-align: center;
     padding: 30px 0 40px;
@@ -537,6 +654,11 @@
     .proof-title { font-size: 22px; }
     .final-cta { padding: 50px 24px; }
     .final-cta h2 { font-size: 28px; }
+    .manifesto { padding: 40px 28px; }
+    .manifesto h2 { font-size: 28px; }
+    .manifesto p { font-size: 16px; }
+    .ringsted-feature h3 { font-size: 22px; }
+    .ringsted-stat .num { font-size: 22px; }
   }
 </style>
 </head>
@@ -803,11 +925,49 @@
     </div>
   </div>
 
-  <!-- ==== UPCOMING ==== -->
+  <!-- ==== RINGSTED FEATURE (reference customer) ==== -->
   <div class="section">
-    <div class="section-label">Næste milepæl</div>
-    <h2 class="section-title">Ringsted Festival 2026, 20.000 gæster.</h2>
-    <p class="section-lead">30. juli til 1. august, 2026. Samme platform, 33 gange skalaen. Planen: 51 kunstnere, 59 events, 7 venues, 3 dages festival. Platformen er allerede konfigureret og data-populated. Vil I være med næste sæson?</p>
+    <div class="section-label">Første store udrulning</div>
+    <div class="ringsted-feature">
+      <div>
+        <h3>Ringsted Festival 2026,<br>i det 125 år gamle Lystanlæg.</h3>
+        <p>Siden 2005 har Ringsted Festival manifesteret sig som et <strong>kærligt og festligt møde mellem alle aldre og personligheder</strong>. 30. juli til 1. august 2026 lyses Lystanlægget op af tusindvis af kulørte lamper langs stierne og ved søerne.</p>
+        <p>Egenproducerede træhytter med dans på bordene, food trucks med alverdens mad, et væld af barer, og finurlige oaser med gyngende borde, liggestole og loungemiljøer under trækronerne.</p>
+        <p>Platformen skal ligge under det hele, <strong>helt usynligt</strong>, og give plads til dét, festivalen er.</p>
+      </div>
+      <div class="ringsted-stats">
+        <div class="ringsted-stat">
+          <div class="num">17.000</div>
+          <div class="lbl">Gæster per festivaldag</div>
+        </div>
+        <div class="ringsted-stat">
+          <div class="num">4.000</div>
+          <div class="lbl">Campister på pladsen</div>
+        </div>
+        <div class="ringsted-stat">
+          <div class="num">3 dage</div>
+          <div class="lbl">Uge 31, 30. juli til 1. august</div>
+        </div>
+        <div class="ringsted-stat">
+          <div class="num">50+</div>
+          <div class="lbl">Barer og boder på tværs af pladsen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== MANIFESTO ==== -->
+  <div class="section">
+    <div class="manifesto">
+      <div class="manifesto-inner">
+        <div class="manifesto-eyebrow">Det, det hele handler om</div>
+        <h2>Musik og mad. Kærlighed og cocktails. Fest og idyl.</h2>
+        <p>Kram under trækronerne. Samtaler, hvor der er plads til at dele noget sårbart. Øjeblikke af intensitet og nærvær. <em>En anderledes måde at være sammen på.</em></p>
+        <p>Det er dét, en festival <strong>er</strong>. Og det er dét, teknologien skal tjene. Ikke stjæle tid fra, ikke stjæle opmærksomhed fra, ikke komme i vejen for.</p>
+        <p><strong>Vi bygger platformen, så gæsterne kan være til stede.</strong> Så I som arrangør kan bruge energien på at skabe øjeblikkene, ikke på at få systemerne til at snakke sammen.</p>
+        <div class="manifesto-signoff">// UTOPIEN FORLØSES</div>
+      </div>
+    </div>
   </div>
 
   <!-- ==== CTA ==== -->
