@@ -1091,9 +1091,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
+  .security-wrap > div { min-width: 0; }
   @media (max-width: 900px) {
-    .security-wrap { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; }
+    .security-wrap { grid-template-columns: 1fr; padding: 28px 22px; gap: 24px; }
+  }
+  @media (max-width: 540px) {
+    .security-wrap { padding: 24px 18px; border-radius: 16px; }
+    .security-wrap h2 { font-size: 24px; }
   }
   .security-wrap h2 {
     font-size: 28px;
@@ -1101,6 +1108,7 @@
     letter-spacing: -0.4px;
     line-height: 1.2;
     margin-bottom: 10px;
+    overflow-wrap: break-word;
   }
   .security-wrap h2 .accent {
     background: linear-gradient(135deg, var(--accent-green), var(--accent));
@@ -1111,10 +1119,109 @@
   .security-wrap .lead {
     font-size: 16px; color: var(--text); font-weight: 600;
     margin-bottom: 14px;
+    overflow-wrap: break-word;
   }
   .security-wrap p {
     font-size: 14px; color: var(--text-muted);
     line-height: 1.65; margin-bottom: 12px;
+    overflow-wrap: break-word;
+  }
+  .security-wrap .outcome-box ul li {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: pretty;
+  }
+
+  /* ===== Manifesto teaser (forsmag før filosofien) ===== */
+  .manifesto-teaser {
+    display: block;
+    background:
+      radial-gradient(circle at 85% 0%, rgba(245, 181, 212, 0.18), transparent 55%),
+      linear-gradient(135deg, rgba(245, 181, 212, 0.08), rgba(239, 166, 200, 0.14));
+    border: 1px solid rgba(245, 181, 212, 0.28);
+    border-radius: 20px;
+    padding: 38px 44px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto-teaser::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #f5b5d4, #efa6c8);
+    opacity: 0.75;
+  }
+  .manifesto-teaser:hover {
+    transform: translateY(-2px);
+    border-color: rgba(245, 181, 212, 0.45);
+    box-shadow: 0 20px 50px -20px rgba(245, 181, 212, 0.35);
+  }
+  .manifesto-teaser .tease-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f5b5d4;
+    margin-bottom: 18px;
+  }
+  .manifesto-teaser .tease-title {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 22px;
+    text-wrap: balance;
+    max-width: 780px;
+  }
+  .manifesto-teaser .tease-title em {
+    color: #f5b5d4;
+    font-style: italic;
+    font-weight: 800;
+  }
+  .manifesto-teaser .tease-lines {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 26px;
+    max-width: 720px;
+  }
+  .manifesto-teaser .tease-lines span {
+    display: block;
+    text-wrap: pretty;
+  }
+  .manifesto-teaser .tease-lines em {
+    font-style: italic;
+    color: var(--text);
+  }
+  .manifesto-teaser .tease-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #f5b5d4;
+  }
+  .manifesto-teaser .tease-cta svg {
+    transition: transform 0.3s ease;
+  }
+  .manifesto-teaser:hover .tease-cta svg {
+    transform: translateY(3px);
+  }
+  @media (max-width: 760px) {
+    .manifesto-teaser { padding: 30px 26px; }
+    .manifesto-teaser .tease-title { font-size: 24px; }
+  }
+  @media (max-width: 540px) {
+    .manifesto-teaser { padding: 26px 22px; border-radius: 16px; }
+    .manifesto-teaser .tease-title { font-size: 22px; }
+    .manifesto-teaser .tease-lines { font-size: 15px; line-height: 1.8; }
   }
 
   /* ===== Manifesto section (pink/coral like the festival slide) ===== */
@@ -1415,6 +1522,25 @@
     </div>
   </div>
 
+  <!-- ==== TEASER: Forsmag på filosofien (Det, det hele handler om) ==== -->
+  <div class="section">
+    <a href="#manifest" class="manifesto-teaser">
+      <div class="tease-eyebrow">Og så er der det her...</div>
+      <h3 class="tease-title">For i sidste ende handler det ikke om teknologi. Det handler om <em>øjeblikke</em>.</h3>
+      <div class="tease-lines">
+        <span>Musik og mad. Kærlighed og cocktails.</span>
+        <span>Kram under trækronerne. Samtaler, der betyder noget.</span>
+        <span><em>Rummet, hvor vi mødes som noget andet.</em></span>
+      </div>
+      <div class="tease-cta">
+        Læs hvorfor vi bygger det sådan her
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+
   <!-- ==== COMMUNITY ==== -->
   <div class="section">
     <div class="section-label">Samvær</div>
@@ -1687,13 +1813,13 @@
       <div class="outcome-box">
         <div class="outcome-eyebrow">Det giver jer</div>
         <ul>
-          <li>MitID på alle profiler og overførsler, sortbørs&nbsp;lukket&nbsp;ned</li>
-          <li>Al data tilhører jer, opbevaret&nbsp;på&nbsp;EU-datacenter</li>
-          <li>DPA og underdatabehandleraftaler&nbsp;klar&nbsp;fra&nbsp;start</li>
-          <li>Ingen 3. parts leverandører&nbsp;at&nbsp;koordinere</li>
-          <li>Gennemsigtig prissætning, én&nbsp;partner</li>
+          <li>MitID på alle profiler og overførsler, sortbørs lukket ned</li>
+          <li>Al data tilhører jer, opbevaret på EU-datacenter</li>
+          <li>DPA og underdatabehandler&shy;aftaler klar fra start</li>
+          <li>Ingen 3. parts leverandører at koordinere</li>
+          <li>Gennemsigtig prissætning, én partner</li>
           <li>Stabil og godkendt betalingshåndtering</li>
-          <li>Klare ansvarslinjer ved&nbsp;revision</li>
+          <li>Klare ansvarslinjer ved revision</li>
         </ul>
       </div>
     </div>
@@ -1786,7 +1912,7 @@
   </div>
 
   <!-- ==== MANIFESTO ==== -->
-  <div class="section">
+  <div class="section" id="manifest">
     <div class="manifesto">
       <div class="manifesto-inner">
         <div class="manifesto-eyebrow">Det, det hele handler om</div>
