@@ -9,7 +9,7 @@
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="LiveCloud, festivalplatformen bygget af festivalfolk">
-<meta property="og:description" content="Det bedste system er det, gæsten aldrig ser eller tænker over. En festival handler ikke om systemer. Den handler om mennesker, musik og fantastiske øjeblikke. Vi bygger systemerne, så I kan bruge tiden på at skabe rammerne.">
+<meta property="og:description" content="Det bedste system er det, gæsten aldrig ser eller tænker over. En festival opstår i øjeblikke: lyden, lyset, menneskene. Når alt spiller, vokser stemningen af sig selv. Det er det, LiveCloud leverer.">
 <meta property="og:locale" content="da_DK">
 <meta property="og:site_name" content="LiveCloud">
 
@@ -128,6 +128,25 @@
     max-width: 680px;
     margin: 0 auto 36px;
     font-weight: 400;
+  }
+  .hero-lead {
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+  .hero-lead p {
+    font-size: 20px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+  .hero-lead p.punch {
+    margin-top: 14px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .hero-lead p { font-size: 17px; }
   }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 10px;
@@ -1261,7 +1280,12 @@
       Festival-platformen, bygget af festivalfolk
     </div>
     <h1>Det bedste system er det,<br><span class="accent">gæsten aldrig ser eller tænker over</span></h1>
-    <p class="hero-sub">En festival handler ikke om systemer. Den handler om mennesker, musik og fantastiske øjeblikke. Vi bygger systemerne, så I kan bruge tiden på at skabe rammerne til alt det, gæsterne rent faktisk husker.</p>
+    <div class="hero-lead">
+      <p>En festival opstår i øjeblikke.</p>
+      <p>Lyden. Lyset. Menneskene. Alt det imellem.</p>
+      <p>Når alt spiller, vokser stemningen af sig selv.</p>
+      <p class="punch">Det er det, LiveCloud leverer.</p>
+    </div>
     <a href="#kontakt" class="hero-cta">
       Book en demo
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
