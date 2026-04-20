@@ -520,6 +520,152 @@
     border-color: var(--accent);
   }
 
+  /* ===== Inline contact form ===== */
+  .cta-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 14px;
+    border: none;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.2px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-open-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-open-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(167, 139, 250, 0.45);
+  }
+  .cta-open-btn:active { transform: translateY(-1px); }
+  .cta-open-btn svg {
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .cta-open-btn:hover svg { transform: translateX(3px); }
+
+  @keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.4); }
+    70% { box-shadow: 0 0 0 14px rgba(167, 139, 250, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+  }
+  .cta-open-btn.pulse { animation: pulseRing 2.2s ease-out infinite; }
+
+  .contact-form-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+  }
+  .contact-form-wrap.open { max-height: 800px; }
+
+  .contact-form {
+    background: rgba(10, 12, 19, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 28px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .contact-form .full { grid-column: 1 / -1; }
+  .contact-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--accent-purple);
+    background: rgba(167, 139, 250, 0.04);
+  }
+  .contact-form textarea { resize: vertical; min-height: 80px; }
+  .contact-form .actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .contact-form .submit-btn {
+    background: linear-gradient(135deg, var(--accent-green), var(--accent));
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 6px 18px rgba(92, 183, 122, 0.3);
+  }
+  .contact-form .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(92, 183, 122, 0.45);
+  }
+  .contact-form .cancel-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .contact-form .cancel-btn:hover {
+    background: var(--bg-card);
+    color: var(--text);
+  }
+  .contact-form .form-hint {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+  @media (max-width: 640px) {
+    .contact-form { grid-template-columns: 1fr; padding: 20px; }
+  }
+
   /* ===== Philosophy intro (early, quiet) ===== */
   .philo-intro {
     max-width: 720px;
@@ -1370,17 +1516,91 @@
     </div>
   </div>
 
+  <!-- ==== CLOSING PHILOSOPHY ==== -->
+  <div class="philo-intro" style="margin-bottom: 32px;">
+    <p>Platformen virker bedst, når <strong>ingen tænker over den</strong>. Når festivalen bare flyder, når gæsterne bare er til stede, når regnskabet bare stemmer.</p>
+    <p class="soft">Det er dét, vi bygger for. Og det er dét, vi gerne vil vise jer.</p>
+  </div>
+
   <!-- ==== CTA ==== -->
   <div class="final-cta" id="kontakt">
-    <h2>Skal vi tage en snak?</h2>
-    <p>Vi viser gerne platformen live og fortæller hvad det koster. Skriv til os, så vender vi tilbage inden for et par hverdage.</p>
+    <h2>Kaffe, kage og platformen live.</h2>
+    <p>Vi kommer forbi, viser jer hvordan det hele spiller sammen, og fortæller hvad det koster. Ingen forpligtelse, ingen salgs-pitch. Bare to festivalfolk, der taler om festival.</p>
     <div class="cta-buttons">
-      <a class="btn-primary" href="mailto:kontakt@livecloud.dk?subject=Festival-platform%20forespørgsel">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Book en demo
-      </a>
+      <button class="cta-open-btn pulse" onclick="openContactForm()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Ja tak, lad os tage en snak
+      </button>
+    </div>
+
+    <!-- Inline form (hidden by default) -->
+    <div class="contact-form-wrap" id="contactFormWrap">
+      <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+        <div>
+          <label for="cf-navn">Dit navn</label>
+          <input type="text" id="cf-navn" name="navn" required placeholder="Fornavn Efternavn">
+        </div>
+        <div>
+          <label for="cf-fest">Festival eller organisation</label>
+          <input type="text" id="cf-fest" name="festival" required placeholder="Fx Smukfest, Heartland, et nyt initiativ">
+        </div>
+        <div>
+          <label for="cf-email">E-mail</label>
+          <input type="email" id="cf-email" name="email" required placeholder="navn@festival.dk">
+        </div>
+        <div>
+          <label for="cf-tlf">Telefon <span style="opacity:0.5; font-weight:400; text-transform:none;">(valgfri)</span></label>
+          <input type="tel" id="cf-tlf" name="telefon" placeholder="+45 12 34 56 78">
+        </div>
+        <div class="full">
+          <label for="cf-besked">Hvad vil I gerne vide?</label>
+          <textarea id="cf-besked" name="besked" rows="3" placeholder="Fx 'Vi har 8.000 gæster og overvejer at skifte system næste sæson' eller 'Bare nysgerrig, vil gerne se demo'"></textarea>
+        </div>
+        <div class="actions">
+          <button type="button" class="cancel-btn" onclick="closeContactForm()">Luk</button>
+          <button type="submit" class="submit-btn">
+            Send forespørgsel
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <div class="form-hint">Din besked åbner i dit e-mail-program, klar til at sende. Vi svarer typisk inden for et par hverdage.</div>
+      </form>
     </div>
   </div>
+
+  <script>
+    function openContactForm() {
+      document.getElementById('contactFormWrap').classList.add('open');
+      document.querySelector('.cta-open-btn').classList.remove('pulse');
+      setTimeout(() => document.getElementById('cf-navn').focus(), 400);
+    }
+    function closeContactForm() {
+      document.getElementById('contactFormWrap').classList.remove('open');
+    }
+    function submitContactForm(e) {
+      e.preventDefault();
+      const f = e.target;
+      const navn = f.navn.value.trim();
+      const festival = f.festival.value.trim();
+      const email = f.email.value.trim();
+      const tlf = f.telefon.value.trim();
+      const besked = f.besked.value.trim();
+      const subject = encodeURIComponent(`Demo-forespørgsel fra ${festival}`);
+      const body = encodeURIComponent(
+        `Hej LiveCloud,\n\n` +
+        `Jeg vil gerne høre mere om platformen.\n\n` +
+        `Navn: ${navn}\n` +
+        `Festival / organisation: ${festival}\n` +
+        `E-mail: ${email}\n` +
+        (tlf ? `Telefon: ${tlf}\n` : '') +
+        (besked ? `\n${besked}\n` : '') +
+        `\nVenlig hilsen,\n${navn}`
+      );
+      window.location.href = `mailto:kontakt@livecloud.dk?subject=${subject}&body=${body}`;
+    }
+  </script>
 
   <div class="footer">
     <p>LiveCloud ApS &middot; Festival-platformen &middot; <a href="mailto:kontakt@livecloud.dk">kontakt@livecloud.dk</a></p>
