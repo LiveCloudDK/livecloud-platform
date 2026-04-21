@@ -804,107 +804,6 @@
     .philo-intro.quote::before { font-size: 90px; top: -4px; }
   }
 
-  /* ===== Pull-quote (editorial closing quote) ===== */
-  .pull-quote {
-    max-width: 760px;
-    margin: 0 auto 32px;
-    padding: 72px 48px 36px;
-    background: linear-gradient(135deg, rgba(244, 114, 182, 0.04), rgba(167, 139, 250, 0.06));
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    text-align: left;
-    position: relative;
-  }
-  .pull-quote::before {
-    content: '\201C';
-    position: absolute;
-    top: 8px;
-    left: 44px;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 140px;
-    line-height: 1;
-    font-weight: 700;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    opacity: 0.8;
-    pointer-events: none;
-  }
-  .pull-quote blockquote { margin: 0; padding: 0; }
-  .pull-quote figcaption { margin: 0; }
-  .pull-quote .pq-setup {
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-bottom: 22px;
-    text-wrap: pretty;
-  }
-  .pull-quote .pq-setup strong {
-    color: var(--text);
-    font-weight: 600;
-    background: none;
-    -webkit-text-fill-color: currentColor;
-  }
-  .pull-quote .pq-punch {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.4px;
-    color: var(--text);
-    margin-bottom: 32px;
-    text-wrap: balance;
-  }
-  .pull-quote .pq-punch em {
-    font-style: italic;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
-  }
-  .pull-quote .pq-attr {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
-  }
-  .pull-quote .pq-attr img {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--border);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-    flex-shrink: 0;
-  }
-  .pull-quote .pq-attr img[data-fallback] { display: none; }
-  .pull-quote .pq-attr .meta {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .pull-quote .pq-attr .name {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.1px;
-  }
-  .pull-quote .pq-attr .title {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-  @media (max-width: 640px) {
-    .pull-quote { padding: 60px 26px 28px; border-radius: 18px; }
-    .pull-quote::before { font-size: 110px; top: 2px; left: 22px; }
-    .pull-quote .pq-setup { font-size: 15px; }
-    .pull-quote .pq-punch { font-size: 21px; }
-    .pull-quote .pq-attr img { width: 48px; height: 48px; }
-  }
-
   /* ===== Value-prop card (hero follow-up) ===== */
   .valueprop {
     background: var(--bg-card);
@@ -2026,20 +1925,16 @@
     </div>
   </div>
 
-  <!-- ==== CLOSING PHILOSOPHY (editorial pullquote) ==== -->
-  <figure class="pull-quote">
-    <blockquote>
-      <p class="pq-setup">Platformen virker bedst, når <strong>ingen tænker over den</strong>. Når festivalen bare flyder, når gæsterne bare er til stede, når regnskabet bare stemmer.</p>
-      <p class="pq-punch">Det bedste system er det, ingen lægger mærke til. <em>Det har vi bygget.</em></p>
-    </blockquote>
-    <figcaption class="pq-attr">
-      <img src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
-      <div class="meta">
-        <div class="name">Jakob Højgård</div>
-        <div class="title">CEO, LiveCloud</div>
-      </div>
-    </figcaption>
-  </figure>
+  <!-- ==== CLOSING PHILOSOPHY (as quote) ==== -->
+  <div class="philo-intro quote" style="margin-bottom: 32px;">
+    <p>Platformen virker bedst, når <strong>ingen tænker over den</strong>. Når festivalen bare flyder, når gæsterne bare er til stede, når regnskabet bare stemmer.</p>
+    <p class="soft">Det bedste system er det, ingen lægger mærke til. Det har vi bygget.</p>
+    <div class="attr">
+      <div class="name">Jakob Højgård</div>
+      <div class="title">CEO, LiveCloud</div>
+    </div>
+    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
+  </div>
 
   <!-- ==== CTA ==== -->
   <div class="final-cta" id="kontakt">
