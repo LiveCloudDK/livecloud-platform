@@ -40,8 +40,8 @@ helper script below to auto-generate the WebP).
 | `images/app-billet` | Phone mockup, Jeres-app section | App ticket screenshot |
 | `images/app-beats` | Phone mockup, Beats section | App Beats wallet screenshot |
 | `images/app-preorder` | Phone mockup, Mere-flow section | App pre-order menu screenshot |
-| `video/showreel-2.mp4` | Showreel — **left tile**, "I baren" | LIVECLOUD 2 NO LOGO MARCH 2026 |
-| `video/showreel-1.mp4` | Showreel — **right tile**, "Velkomst" | LIVECLOUD 1 NO LOGO MARCH 2026 |
+| `video/showreel-2.mp4` | Click-to-play showreel after the gallery, label "Scan & betal" | LIVECLOUD 2 NO LOGO MARCH 2026 |
+| `video/showreel-1.mp4` | Atmospheric autoplay loop between Ringsted and Manifesto (no controls, no label) | LIVECLOUD 1 NO LOGO MARCH 2026 |
 | `video/showreel-{1,2}-poster.{jpg,webp}` | Poster frames | derived from each MP4 |
 
 ## Recipe — swap a photo

@@ -1133,6 +1133,23 @@
     filter: saturate(1.1);
   }
 
+  /* ===== Atmospheric loop video (autoplay, no controls) ===== */
+  .video-loop {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+  }
+  .video-loop video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   /* ===== Showreel video (click toggles play/pause) ===== */
   .showreel {
     /* button reset */
@@ -2390,24 +2407,16 @@
     </div>
   </div>
 
-  <!-- ==== SHOWREEL #2 — atmospheric "Velkomst" between Ringsted and Manifesto ==== -->
-  <!-- Swap video/showreel-1.{mp4,poster} with a new clip any time. See photos/SWAP-README.md -->
+  <!-- ==== ATMOSPHERIC LOOP VIDEO between Ringsted and Manifesto ==== -->
+  <!-- Auto-plays muted in a loop, no controls. JS pauses it for users who
+       prefer reduced motion, and when it scrolls out of view (saves battery). -->
   <div class="section">
-    <button type="button" class="showreel" aria-label="Afspil 10-sekunders stemningsvideo fra Festhallen 2026 — gæster ankommer">
-      <picture>
-        <source srcset="video/showreel-1-poster.webp" type="image/webp">
-        <img class="showreel-poster" src="video/showreel-1-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-      </picture>
-      <video preload="none" loop muted playsinline poster="video/showreel-1-poster.jpg">
+    <div class="video-loop">
+      <video autoplay loop muted playsinline preload="metadata"
+             poster="video/showreel-1-poster.jpg" aria-hidden="true">
         <source src="video/showreel-1.mp4" type="video/mp4">
       </video>
-      <span class="showreel-overlay" aria-hidden="true">
-        <span class="showreel-play">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </span>
-      </span>
-      <span class="showreel-label" aria-hidden="true">Velkomst &middot; 10 sek.</span>
-    </button>
+    </div>
   </div>
 
   <!-- ==== MANIFESTO ==== -->
@@ -2488,6 +2497,29 @@
   <script>
     (() => {
       const $ = (sel, root = document) => root.querySelector(sel);
+
+      // ── Atmospheric loop video: pause for reduced-motion users, and only play while in view ──
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.video-loop video').forEach(video => {
+        if (reduceMotion) {
+          video.removeAttribute('autoplay');
+          video.pause();
+          return;
+        }
+        // Pause the video while it's out of view — saves battery + bandwidth
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+              if (e.isIntersecting) {
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            });
+          }, { threshold: 0.25 });
+          io.observe(video);
+        }
+      });
 
       // ── Showreel: click toggles play/pause, falls back to native controls if blocked ──
       const PLAY_LABEL = 'Afspil video';
