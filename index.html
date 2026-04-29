@@ -32,8 +32,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
 
-<!-- Preload hero image so LCP paints immediately -->
-<link rel="preload" as="image" href="photos/photo-hero.jpg" fetchpriority="high">
+<!-- Preload hero image so LCP paints immediately. Modern browsers fetch the
+     .webp; older ones fall back to the JPEG referenced inside <picture> below. -->
+<link rel="preload" as="image" href="photos/photo-hero.webp" type="image/webp" fetchpriority="high">
 
 <!-- Organization schema for rich snippets -->
 <script type="application/ld+json">
@@ -1133,6 +1134,14 @@
   }
 
   /* ===== Showreel video (click-to-play) ===== */
+  .showreels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 760px) {
+    .showreels { grid-template-columns: 1fr; }
+  }
   .showreel {
     /* button reset */
     appearance: none;
@@ -1743,8 +1752,11 @@
   <!-- ==== HERO ==== -->
   <div class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Swap photos/photo-hero.jpg with a new shot any time — see photos/SWAP-README.md -->
-      <img src="photos/photo-hero.jpg" alt="" width="1800" height="1125" fetchpriority="high" decoding="async">
+      <!-- Swap photos/photo-hero.{webp,jpg} with a new shot any time — see photos/SWAP-README.md -->
+      <picture>
+        <source srcset="photos/photo-hero.webp" type="image/webp">
+        <img src="photos/photo-hero.jpg" alt="" width="1800" height="1125" fetchpriority="high" decoding="async">
+      </picture>
     </div>
     <div class="hero-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -1772,7 +1784,10 @@
       <div class="name">Jakob Højgård</div>
       <div class="title">CEO, LiveCloud</div>
     </div>
-    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
+    <picture>
+      <source srcset="jakob.webp" type="image/webp">
+      <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
+    </picture>
   </div>
 
   <!-- ==== VALUE PROP CARD ==== -->
@@ -1879,7 +1894,10 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-billet.png" alt="Festhallen-appen viser gæstens billet med QR-kode, brandet i festivalens egen identitet" width="1206" height="2622" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/app-billet.webp" type="image/webp">
+              <img src="images/app-billet.jpg" alt="Festhallen-appen viser gæstens billet med QR-kode, brandet i festivalens egen identitet" width="331" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -1908,44 +1926,80 @@
       </div>
       <div class="moments-grid">
         <div class="moment tall">
-          <img src="photos/photo-bar.jpg" alt="Gæster betaler i baren med appen, fadøl og fadøl klar til at blive serveret" width="1800" height="1200" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="photos/photo-bar.webp" type="image/webp">
+            <img src="photos/photo-bar.jpg" alt="Gæster betaler i baren med appen, fadøl og fadøl klar til at blive serveret" width="1800" height="1200" loading="lazy" decoding="async">
+          </picture>
           <div class="caption">I baren — betaling med få klik</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-checkin.jpg" alt="Gæster med billet og QR-kode klar i appen ved indgangen" width="1800" height="1125" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="photos/photo-checkin.webp" type="image/webp">
+            <img src="photos/photo-checkin.jpg" alt="Gæster med billet og QR-kode klar i appen ved indgangen" width="1800" height="1125" loading="lazy" decoding="async">
+          </picture>
           <div class="caption">Adgang med profil</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-transfer.jpg" alt="To telefoner side om side hvor en billet overføres mellem to verificerede profiler" width="1800" height="1125" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="photos/photo-transfer.webp" type="image/webp">
+            <img src="photos/photo-transfer.jpg" alt="To telefoner side om side hvor en billet overføres mellem to verificerede profiler" width="1800" height="1125" loading="lazy" decoding="async">
+          </picture>
           <div class="caption">Billet-overførsel ven til ven</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-pos.jpg" alt="Bartender skanner QR-kode i POS-appen, fadøl og kvitteringer på baren" width="1800" height="1246" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="photos/photo-pos.webp" type="image/webp">
+            <img src="photos/photo-pos.jpg" alt="Bartender skanner QR-kode i POS-appen, fadøl og kvitteringer på baren" width="1800" height="1246" loading="lazy" decoding="async">
+          </picture>
           <div class="caption">POS i baren</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-gate.jpg" alt="Gæst skanner QR-kode ved gate, adgang i appen" width="1800" height="1125" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="photos/photo-gate.webp" type="image/webp">
+            <img src="photos/photo-gate.jpg" alt="Gæst skanner QR-kode ved gate, adgang i appen" width="1800" height="1125" loading="lazy" decoding="async">
+          </picture>
           <div class="caption">Gate-scan på 2 sekunder</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ==== SHOWREEL VIDEO (click-to-play, with poster) ==== -->
-  <!-- Swap video/showreel-2.mp4 + video/showreel-2-poster.jpg with retouched versions when ready. -->
+  <!-- ==== SHOWREEL VIDEOS (click-to-play, two angles) ==== -->
+  <!-- Swap video/showreel-*.mp4 + their posters with new versions any time. See photos/SWAP-README.md -->
   <div class="section">
-    <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026">
-      <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-      <video preload="none" loop muted playsinline poster="video/showreel-2-poster.jpg">
-        <source src="video/showreel-2.mp4" type="video/mp4">
-      </video>
-      <span class="showreel-overlay" aria-hidden="true">
-        <span class="showreel-play">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <div class="showreels">
+      <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026 — gæster ved baren">
+        <picture>
+          <source srcset="video/showreel-2-poster.webp" type="image/webp">
+          <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </picture>
+        <video preload="none" loop muted playsinline poster="video/showreel-2-poster.jpg">
+          <source src="video/showreel-2.mp4" type="video/mp4">
+        </video>
+        <span class="showreel-overlay" aria-hidden="true">
+          <span class="showreel-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
         </span>
-      </span>
-      <span class="showreel-label" aria-hidden="true">Festhallen 2026 &middot; 10 sek.</span>
-    </button>
+        <span class="showreel-label" aria-hidden="true">I baren &middot; 10 sek.</span>
+      </button>
+
+      <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026 — gæster ankommer">
+        <picture>
+          <source srcset="video/showreel-1-poster.webp" type="image/webp">
+          <img class="showreel-poster" src="video/showreel-1-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        </picture>
+        <video preload="none" loop muted playsinline poster="video/showreel-1-poster.jpg">
+          <source src="video/showreel-1.mp4" type="video/mp4">
+        </video>
+        <span class="showreel-overlay" aria-hidden="true">
+          <span class="showreel-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+        <span class="showreel-label" aria-hidden="true">Velkomst &middot; 10 sek.</span>
+      </button>
+    </div>
   </div>
 
   <!-- ==== TEASER: Forsmag på filosofien (Det, det hele handler om) ==== -->
@@ -2184,7 +2238,10 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-preorder.png" alt="Pre-order af drikkevarer i appen, så gæsten kan springe køen over" width="1206" height="2622" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/app-preorder.webp" type="image/webp">
+              <img src="images/app-preorder.jpg" alt="Pre-order af drikkevarer i appen, så gæsten kan springe køen over" width="331" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -2216,7 +2273,10 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-beats.png" alt="Beats-saldo tanket op i appen, klar til betaling i barer og boder" width="1206" height="2622" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/app-beats.webp" type="image/webp">
+              <img src="images/app-beats.jpg" alt="Beats-saldo tanket op i appen, klar til betaling i barer og boder" width="331" height="720" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
@@ -2377,7 +2437,10 @@
       <div class="name">Jakob Højgård</div>
       <div class="title">CEO, LiveCloud</div>
     </div>
-    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
+    <picture>
+      <source srcset="jakob.webp" type="image/webp">
+      <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
+    </picture>
   </div>
 
   <!-- ==== CTA ==== -->
@@ -2432,8 +2495,7 @@
       const $ = (sel, root = document) => root.querySelector(sel);
 
       // ── Showreel: click/keyboard to play, fallback to native controls if blocked ──
-      const showreel = $('.showreel');
-      if (showreel) {
+      document.querySelectorAll('.showreel').forEach(showreel => {
         showreel.addEventListener('click', () => {
           if (showreel.classList.contains('playing')) return;
           const video = $('video', showreel);
@@ -2444,7 +2506,7 @@
             video.setAttribute('controls', '');
           });
         });
-      }
+      });
 
       // ── Contact form: open / close / submit-as-mailto ──
       const formWrap = $('#contactFormWrap');
