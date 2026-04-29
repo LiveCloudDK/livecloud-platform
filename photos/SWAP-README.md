@@ -1,31 +1,34 @@
 # Photo & video swap guide
 
-All site photos and videos use **stable, semantic file names**. When the
-retouched, watermark-free versions arrive from Chad T. Charlton, you swap
-files in place — no HTML or CSS changes needed.
+All site photos and videos use **stable, semantic file names**. When new
+versions of the photo/video assets arrive from Chad T. Charlton, drop
+them in place over the existing files — no HTML or CSS changes needed.
+
+Current assets are the **March 2026 finals** (retouched, no watermark,
+no in-frame logo on the showreel videos).
 
 ## Where each file appears on the site
 
-| File | Used in section | Original source |
+| File | Used in section | Source (March 2026 finals) |
 |------|-----------------|------------------|
-| `photos/photo-hero.jpg` | Hero backdrop (top of page) | CTC18361 |
-| `photos/photo-bar.jpg` | Real-moments gallery, **large tile (left)** | CTC18664 |
-| `photos/photo-checkin.jpg` | Real-moments gallery, top-middle tile | CTC18242 |
-| `photos/photo-transfer.jpg` | Real-moments gallery, top-right tile | CTC18231 |
-| `photos/photo-pos.jpg` | Real-moments gallery, bottom-middle tile | CTC18668 |
-| `photos/photo-gate.jpg` | Real-moments gallery, bottom-right tile | CTC18236 |
-| `photos/photo-festival.jpg` | Reserved (not yet placed on page) | CTC18662 |
-| `video/showreel-2.mp4` | Showreel block (click-to-play) | LIVECLOUD 2 MARCH 2026 |
+| `photos/photo-hero.jpg` | Hero backdrop (top of page) | 10 -CTC18399-Edit (POS tap-to-pay) |
+| `photos/photo-bar.jpg` | Real-moments gallery, **large tile (left)** | 12 -CTC18664-Edit (busy bar, beer + phones) |
+| `photos/photo-checkin.jpg` | Real-moments gallery, top-middle tile | 4 -CTC18242-Edit (multiple QR phones) |
+| `photos/photo-transfer.jpg` | Real-moments gallery, top-right tile | 2 -CTC18231-Edit (peer ticket transfer) |
+| `photos/photo-pos.jpg` | Real-moments gallery, bottom-middle tile | 13 -CTC18668-Edit (bartender scanning QR) |
+| `photos/photo-gate.jpg` | Real-moments gallery, bottom-right tile | 3 -CTC18236-Edit (gate scan moment) |
+| `photos/photo-festival.jpg` | Reserved (not yet placed on page) | 11 -CTC18662-Edit (single phone QR + beer) |
+| `video/showreel-2.mp4` | Showreel block (click-to-play) | LIVECLOUD 2 NO LOGO MARCH 2026 |
 | `video/showreel-2-poster.jpg` | Showreel poster frame | derived from showreel-2.mp4 |
-| `video/showreel-1.mp4` | Reserved (alternative showreel) | LIVECLOUD 1 MARCH 2026 |
+| `video/showreel-1.mp4` | Reserved (alternative showreel) | LIVECLOUD 1 NO LOGO MARCH 2026 |
 | `video/showreel-1-poster.jpg` | Reserved | derived from showreel-1.mp4 |
 
 ## To swap a photo
 
-1. Receive the retouched JPEG from the photographer.
-2. Resize to **max 1600 px wide** (web-friendly), JPEG quality ~80:
+1. Receive the new JPEG from the photographer.
+2. Resize to **max 1800 px wide** (retina-ready, web-friendly), JPEG quality ~82:
    ```sh
-   sips -Z 1600 -s format jpeg -s formatOptions 80 input.jpg --out output.jpg
+   sips -Z 1800 -s format jpeg -s formatOptions 82 input.jpg --out output.jpg
    ```
 3. Save it over the existing file in `photos/` using the **exact same
    filename** (e.g. `photo-hero.jpg`).
