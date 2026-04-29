@@ -1133,15 +1133,7 @@
     filter: saturate(1.1);
   }
 
-  /* ===== Showreel video (click-to-play) ===== */
-  .showreels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  @media (max-width: 760px) {
-    .showreels { grid-template-columns: 1fr; }
-  }
+  /* ===== Showreel video (click toggles play/pause) ===== */
   .showreel {
     /* button reset */
     appearance: none;
@@ -1174,7 +1166,8 @@
     transform: scale(1.02);
     z-index: 1;
   }
-  .showreel.playing .showreel-poster { opacity: 0; pointer-events: none; }
+  .showreel.playing .showreel-poster,
+  .showreel.paused .showreel-poster { opacity: 0; pointer-events: none; }
   .showreel video { z-index: 0; }
   .showreel-overlay {
     position: absolute;
@@ -1964,42 +1957,24 @@
     </div>
   </div>
 
-  <!-- ==== SHOWREEL VIDEOS (click-to-play, two angles) ==== -->
-  <!-- Swap video/showreel-*.mp4 + their posters with new versions any time. See photos/SWAP-README.md -->
+  <!-- ==== SHOWREEL #1 — primary "platform in action" video (after gallery) ==== -->
+  <!-- Swap video/showreel-2.{mp4,poster} with a new clip any time. See photos/SWAP-README.md -->
   <div class="section">
-    <div class="showreels">
-      <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026 — gæster ved baren">
-        <picture>
-          <source srcset="video/showreel-2-poster.webp" type="image/webp">
-          <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-        </picture>
-        <video preload="none" loop muted playsinline poster="video/showreel-2-poster.jpg">
-          <source src="video/showreel-2.mp4" type="video/mp4">
-        </video>
-        <span class="showreel-overlay" aria-hidden="true">
-          <span class="showreel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </span>
+    <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026 — scan og betal">
+      <picture>
+        <source srcset="video/showreel-2-poster.webp" type="image/webp">
+        <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </picture>
+      <video preload="none" loop muted playsinline poster="video/showreel-2-poster.jpg">
+        <source src="video/showreel-2.mp4" type="video/mp4">
+      </video>
+      <span class="showreel-overlay" aria-hidden="true">
+        <span class="showreel-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         </span>
-        <span class="showreel-label" aria-hidden="true">I baren &middot; 10 sek.</span>
-      </button>
-
-      <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026 — gæster ankommer">
-        <picture>
-          <source srcset="video/showreel-1-poster.webp" type="image/webp">
-          <img class="showreel-poster" src="video/showreel-1-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-        </picture>
-        <video preload="none" loop muted playsinline poster="video/showreel-1-poster.jpg">
-          <source src="video/showreel-1.mp4" type="video/mp4">
-        </video>
-        <span class="showreel-overlay" aria-hidden="true">
-          <span class="showreel-play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </span>
-        </span>
-        <span class="showreel-label" aria-hidden="true">Velkomst &middot; 10 sek.</span>
-      </button>
-    </div>
+      </span>
+      <span class="showreel-label" aria-hidden="true">Scan &amp; betal &middot; 10 sek.</span>
+    </button>
   </div>
 
   <!-- ==== TEASER: Forsmag på filosofien (Det, det hele handler om) ==== -->
@@ -2415,6 +2390,26 @@
     </div>
   </div>
 
+  <!-- ==== SHOWREEL #2 — atmospheric "Velkomst" between Ringsted and Manifesto ==== -->
+  <!-- Swap video/showreel-1.{mp4,poster} with a new clip any time. See photos/SWAP-README.md -->
+  <div class="section">
+    <button type="button" class="showreel" aria-label="Afspil 10-sekunders stemningsvideo fra Festhallen 2026 — gæster ankommer">
+      <picture>
+        <source srcset="video/showreel-1-poster.webp" type="image/webp">
+        <img class="showreel-poster" src="video/showreel-1-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </picture>
+      <video preload="none" loop muted playsinline poster="video/showreel-1-poster.jpg">
+        <source src="video/showreel-1.mp4" type="video/mp4">
+      </video>
+      <span class="showreel-overlay" aria-hidden="true">
+        <span class="showreel-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </span>
+      <span class="showreel-label" aria-hidden="true">Velkomst &middot; 10 sek.</span>
+    </button>
+  </div>
+
   <!-- ==== MANIFESTO ==== -->
   <div class="section" id="manifest">
     <div class="manifesto">
@@ -2494,17 +2489,39 @@
     (() => {
       const $ = (sel, root = document) => root.querySelector(sel);
 
-      // ── Showreel: click/keyboard to play, fallback to native controls if blocked ──
+      // ── Showreel: click toggles play/pause, falls back to native controls if blocked ──
+      const PLAY_LABEL = 'Afspil video';
+      const PAUSE_LABEL = 'Pause video';
       document.querySelectorAll('.showreel').forEach(showreel => {
+        const video = $('video', showreel);
+        if (!video) return;
+        const baseLabel = showreel.getAttribute('aria-label') || PLAY_LABEL;
+
         showreel.addEventListener('click', () => {
-          if (showreel.classList.contains('playing')) return;
-          const video = $('video', showreel);
-          if (!video) return;
-          showreel.classList.add('playing');
-          video.play().catch(() => {
-            showreel.classList.remove('playing');
-            video.setAttribute('controls', '');
-          });
+          if (showreel.classList.contains('playing')) {
+            video.pause();
+            showreel.classList.replace('playing', 'paused');
+            showreel.setAttribute('aria-label', PLAY_LABEL);
+          } else {
+            showreel.classList.add('playing');
+            showreel.classList.remove('paused');
+            showreel.setAttribute('aria-label', PAUSE_LABEL);
+            video.play().catch(() => {
+              // Autoplay blocked — fall back to native controls and revert label
+              showreel.classList.remove('playing');
+              showreel.setAttribute('aria-label', baseLabel);
+              video.setAttribute('controls', '');
+            });
+          }
+        });
+
+        // Reset to "paused" visual state if the video pauses for any other reason
+        video.addEventListener('pause', () => {
+          if (video.ended || video.seeking) return;
+          if (showreel.classList.contains('playing')) {
+            showreel.classList.replace('playing', 'paused');
+            showreel.setAttribute('aria-label', PLAY_LABEL);
+          }
         });
       });
 
