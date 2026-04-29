@@ -6,21 +6,55 @@
 <title>LiveCloud, festivalplatformen bygget af festivalfolk</title>
 <meta name="description" content="Det, der betyder noget, føles ikke kompliceret. Festivalplatformen bygget af festivalfolk: billet, Beats, armbånd, webshop, B2B og akkreditering, samlet ét sted.">
 
+<link rel="canonical" href="https://livecloud.dk/">
+
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="LiveCloud, festivalplatformen bygget af festivalfolk">
 <meta property="og:description" content="Det, der betyder noget, føles ikke kompliceret. Det rigtige system føles ubesværet. En festival er magiske øjeblikke: lyden, lyset, stemningen, vennerne. Når alt omkring spiller, sker resten af sig selv. Det er det grundlag, LiveCloud leverer på.">
+<meta property="og:url" content="https://livecloud.dk/">
+<meta property="og:image" content="https://livecloud.dk/photos/photo-hero.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1125">
+<meta property="og:image:alt" content="Festhallen 2026 — gæst betaler i baren med tap-to-pay i appen">
 <meta property="og:locale" content="da_DK">
 <meta property="og:site_name" content="LiveCloud">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LiveCloud, festivalplatformen">
 <meta name="twitter:description" content="Én platform til hele festivaloplevelsen. Billet, Beats, armbånd, webshop og B2B.">
+<meta name="twitter:image" content="https://livecloud.dk/photos/photo-hero.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230F1117'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='url(%23g)' stroke-width='6'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F472B6'/%3E%3Cstop offset='1' stop-color='%23A78BFA'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
 
+<!-- Preconnect + non-blocking font load -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+
+<!-- Preload hero image so LCP paints immediately -->
+<link rel="preload" as="image" href="photos/photo-hero.jpg" fetchpriority="high">
+
+<!-- Organization schema for rich snippets -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "LiveCloud",
+  "legalName": "LiveCloud ApS",
+  "url": "https://livecloud.dk/",
+  "logo": "https://livecloud.dk/photos/photo-hero.jpg",
+  "description": "Festivalplatformen bygget af festivalfolk. Billet, Beats, armbånd, webshop, B2B og akkreditering, samlet ét sted.",
+  "email": "kontakt@livecloud.dk",
+  "areaServed": "DK",
+  "founder": {
+    "@type": "Person",
+    "name": "Jakob Højgård"
+  }
+}
+</script>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   :root {
     --bg: #0A0C13;
@@ -35,6 +69,34 @@
     --accent-amber: #F59E0B;
     --accent-purple: #A78BFA;
     --accent-pink: #F472B6;
+    /* Reusable gradients */
+    --gradient-primary: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    --gradient-text: linear-gradient(135deg, #FFF 0%, #C9D0E2 100%);
+  }
+
+  /* Honor user's motion preference globally */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users (mouse clicks stay clean) */
+  :focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  /* Buttons get a softer focus ring that complements their shape */
+  .hero-cta:focus-visible,
+  .btn-primary:focus-visible,
+  .cta-open-btn:focus-visible,
+  .submit-btn:focus-visible,
+  .showreel:focus-visible {
+    outline-offset: 4px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,6 +139,7 @@
   }
   .topnav a:hover { color: var(--text); }
   .logo { font-weight: 800; color: var(--text); letter-spacing: -0.2px; }
+  .logo-icon { vertical-align: middle; margin-right: 6px; }
 
   /* ==== HERO ==== */
   .hero {
@@ -135,7 +198,7 @@
     line-height: 1.05;
     letter-spacing: -1.5px;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #FFF 0%, #C9D0E2 100%);
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -143,7 +206,7 @@
     margin-left: auto; margin-right: auto;
   }
   .hero h1 .accent {
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -177,7 +240,7 @@
   }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 10px;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     color: #fff; padding: 14px 28px;
     border-radius: 12px; text-decoration: none;
     font-weight: 700; font-size: 16px;
@@ -283,6 +346,7 @@
   .card.blue { --card-accent: var(--accent); }
   .card.purple { --card-accent: var(--accent-purple); }
   .card.amber { --card-accent: var(--accent-amber); }
+  .card.pink { --card-accent: var(--accent-pink); }
   .card-icon {
     width: 44px; height: 44px; border-radius: 12px;
     background: rgba(96, 165, 250, 0.12);
@@ -292,6 +356,7 @@
   }
   .card.purple .card-icon { background: rgba(167, 139, 250, 0.12); }
   .card.amber .card-icon { background: rgba(245, 158, 11, 0.12); }
+  .card.pink .card-icon { background: rgba(244, 114, 182, 0.12); }
   .card h3 {
     font-size: 19px;
     font-weight: 800;
@@ -476,7 +541,7 @@
     margin-bottom: 16px;
   }
   .philo-title .accent {
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -552,7 +617,7 @@
     position: relative;
   }
   .btn-primary {
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     color: #fff; padding: 13px 26px;
     border-radius: 12px; text-decoration: none;
     font-weight: 700; font-size: 15px;
@@ -583,7 +648,7 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     color: #fff;
     padding: 16px 32px;
     border-radius: 14px;
@@ -750,7 +815,7 @@
     margin-left: auto; margin-right: auto;
   }
   .philo-intro strong {
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -772,7 +837,7 @@
     font-size: 120px;
     line-height: 1;
     font-weight: 700;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -854,7 +919,7 @@
     margin-bottom: 10px;
   }
   .valueprop h2 .accent {
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1069,6 +1134,15 @@
 
   /* ===== Showreel video (click-to-play) ===== */
   .showreel {
+    /* button reset */
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    font: inherit;
+    /* layout */
+    display: block;
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -1107,7 +1181,7 @@
   .showreel-play {
     width: 84px; height: 84px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     display: flex; align-items: center; justify-content: center;
     color: #fff;
     box-shadow: 0 12px 36px rgba(167, 139, 250, 0.45), 0 0 0 6px rgba(255, 255, 255, 0.05);
@@ -1614,7 +1688,7 @@
     font-size: 28px;
     font-weight: 900;
     letter-spacing: -0.4px;
-    background: linear-gradient(135deg, #F472B6, #A78BFA);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1660,17 +1734,17 @@
 
   <nav class="topnav">
     <div class="logo">
-      <svg width="22" height="22" viewBox="0 0 100 100" style="vertical-align: middle; margin-right: 6px;"><circle cx="50" cy="50" r="28" fill="none" stroke="url(#logo-g)" stroke-width="7"/><defs><linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F472B6"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs></svg>
+      <svg class="logo-icon" width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="28" fill="none" stroke="url(#logo-g)" stroke-width="7"/><defs><linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F472B6"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs></svg>
       LiveCloud
     </div>
-    <a href="#kontakt" onclick="openContactForm()">Kontakt os &rarr;</a>
+    <a href="#kontakt">Kontakt os &rarr;</a>
   </nav>
 
   <!-- ==== HERO ==== -->
   <div class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Swap photos/photo-hero.jpg with the retouched version when ready -->
-      <img src="photos/photo-hero.jpg" alt="">
+      <!-- Swap photos/photo-hero.jpg with a new shot any time — see photos/SWAP-README.md -->
+      <img src="photos/photo-hero.jpg" alt="" width="1800" height="1125" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -1698,7 +1772,7 @@
       <div class="name">Jakob Højgård</div>
       <div class="title">CEO, LiveCloud</div>
     </div>
-    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
+    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
   </div>
 
   <!-- ==== VALUE PROP CARD ==== -->
@@ -1742,8 +1816,8 @@
     <p class="section-lead">Vi har bygget et sammenhængende system, der binder gæsten, arrangøren og crew'et sammen. Det samme backend, det samme Beats-regnskab, det samme billetarkiv, men med tre brugerflader, der er designet til hvert sit publikum.</p>
 
     <div class="col-3">
-      <div class="card pink" style="--card-accent: var(--accent-pink);">
-        <div class="card-icon" style="background: rgba(244, 114, 182, 0.12); color: var(--accent-pink);">
+      <div class="card pink">
+        <div class="card-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
         </div>
         <h3>Til gæsten</h3>
@@ -1805,7 +1879,7 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-billet.png" alt="Festhallen-appen viser gæstens billet med QR-kode, brandet i festivalens egen identitet">
+            <img src="images/app-billet.png" alt="Festhallen-appen viser gæstens billet med QR-kode, brandet i festivalens egen identitet" width="1206" height="2622" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1834,23 +1908,23 @@
       </div>
       <div class="moments-grid">
         <div class="moment tall">
-          <img src="photos/photo-bar.jpg" alt="Gæster betaler i baren med appen, fadøl og fadøl klar til at blive serveret">
+          <img src="photos/photo-bar.jpg" alt="Gæster betaler i baren med appen, fadøl og fadøl klar til at blive serveret" width="1800" height="1200" loading="lazy" decoding="async">
           <div class="caption">I baren — betaling med få klik</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-checkin.jpg" alt="Gæster med billet og QR-kode klar i appen ved indgangen">
+          <img src="photos/photo-checkin.jpg" alt="Gæster med billet og QR-kode klar i appen ved indgangen" width="1800" height="1125" loading="lazy" decoding="async">
           <div class="caption">Adgang med profil</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-transfer.jpg" alt="To telefoner side om side hvor en billet overføres mellem to verificerede profiler">
+          <img src="photos/photo-transfer.jpg" alt="To telefoner side om side hvor en billet overføres mellem to verificerede profiler" width="1800" height="1125" loading="lazy" decoding="async">
           <div class="caption">Billet-overførsel ven til ven</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-pos.jpg" alt="Bartender skanner QR-kode i POS-appen, fadøl og kvitteringer på baren">
+          <img src="photos/photo-pos.jpg" alt="Bartender skanner QR-kode i POS-appen, fadøl og kvitteringer på baren" width="1800" height="1246" loading="lazy" decoding="async">
           <div class="caption">POS i baren</div>
         </div>
         <div class="moment">
-          <img src="photos/photo-gate.jpg" alt="Gæst skanner QR-kode ved gate, adgang i appen">
+          <img src="photos/photo-gate.jpg" alt="Gæst skanner QR-kode ved gate, adgang i appen" width="1800" height="1125" loading="lazy" decoding="async">
           <div class="caption">Gate-scan på 2 sekunder</div>
         </div>
       </div>
@@ -1860,18 +1934,18 @@
   <!-- ==== SHOWREEL VIDEO (click-to-play, with poster) ==== -->
   <!-- Swap video/showreel-2.mp4 + video/showreel-2-poster.jpg with retouched versions when ready. -->
   <div class="section">
-    <div class="showreel" onclick="playShowreel(this)">
-      <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="Glimt fra Festhallen 2026 — billet-overførsel og betaling med appen">
+    <button type="button" class="showreel" aria-label="Afspil 10-sekunders showreel fra Festhallen 2026">
+      <img class="showreel-poster" src="video/showreel-2-poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
       <video preload="none" loop muted playsinline poster="video/showreel-2-poster.jpg">
         <source src="video/showreel-2.mp4" type="video/mp4">
       </video>
-      <div class="showreel-overlay">
-        <div class="showreel-play" aria-label="Afspil video fra Festhallen 2026">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-      </div>
-      <div class="showreel-label">Festhallen 2026 &middot; 10 sek.</div>
-    </div>
+      <span class="showreel-overlay" aria-hidden="true">
+        <span class="showreel-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </span>
+      <span class="showreel-label" aria-hidden="true">Festhallen 2026 &middot; 10 sek.</span>
+    </button>
   </div>
 
   <!-- ==== TEASER: Forsmag på filosofien (Det, det hele handler om) ==== -->
@@ -2110,7 +2184,7 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-preorder.png" alt="Pre-order af drikkevarer i appen, så gæsten kan springe køen over">
+            <img src="images/app-preorder.png" alt="Pre-order af drikkevarer i appen, så gæsten kan springe køen over" width="1206" height="2622" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -2142,7 +2216,7 @@
         <div class="phone-frame">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <img src="images/app-beats.png" alt="Beats-saldo tanket op i appen, klar til betaling i barer og boder">
+            <img src="images/app-beats.png" alt="Beats-saldo tanket op i appen, klar til betaling i barer og boder" width="1206" height="2622" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -2303,7 +2377,7 @@
       <div class="name">Jakob Højgård</div>
       <div class="title">CEO, LiveCloud</div>
     </div>
-    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" onerror="this.setAttribute('data-fallback','')">
+    <img class="attr-portrait" src="jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async" onerror="this.setAttribute('data-fallback','')">
   </div>
 
   <!-- ==== CTA ==== -->
@@ -2311,7 +2385,7 @@
     <h2>Start med en samtale</h2>
     <p>Om hvordan platformen fungerer og hvad det kræver. Når det giver mening, tager vi dialogen videre.</p>
     <div class="cta-buttons">
-      <button class="cta-open-btn pulse" onclick="openContactForm()">
+      <button type="button" class="cta-open-btn pulse">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
@@ -2321,7 +2395,7 @@
 
     <!-- Inline form (hidden by default) -->
     <div class="contact-form-wrap" id="contactFormWrap">
-      <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+      <form class="contact-form" id="contactForm">
         <div>
           <label for="cf-navn">Dit navn</label>
           <input type="text" id="cf-navn" name="navn" required>
@@ -2343,7 +2417,7 @@
           <textarea id="cf-besked" name="besked" rows="3"></textarea>
         </div>
         <div class="actions">
-          <button type="button" class="cancel-btn" onclick="closeContactForm()">Luk</button>
+          <button type="button" class="cancel-btn">Luk</button>
           <button type="submit" class="submit-btn">
             Send forespørgsel
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -2354,46 +2428,66 @@
   </div>
 
   <script>
-    function playShowreel(el) {
-      if (el.classList.contains('playing')) return;
-      const video = el.querySelector('video');
-      if (!video) return;
-      el.classList.add('playing');
-      video.play().catch(() => {
-        // Autoplay blocked — keep poster visible, surface controls
-        el.classList.remove('playing');
-        video.setAttribute('controls', '');
+    (() => {
+      const $ = (sel, root = document) => root.querySelector(sel);
+
+      // ── Showreel: click/keyboard to play, fallback to native controls if blocked ──
+      const showreel = $('.showreel');
+      if (showreel) {
+        showreel.addEventListener('click', () => {
+          if (showreel.classList.contains('playing')) return;
+          const video = $('video', showreel);
+          if (!video) return;
+          showreel.classList.add('playing');
+          video.play().catch(() => {
+            showreel.classList.remove('playing');
+            video.setAttribute('controls', '');
+          });
+        });
+      }
+
+      // ── Contact form: open / close / submit-as-mailto ──
+      const formWrap = $('#contactFormWrap');
+      const openBtn = $('.cta-open-btn');
+      const cancelBtn = $('.contact-form .cancel-btn');
+      const form = $('#contactForm');
+
+      const openContactForm = () => {
+        formWrap.classList.add('open');
+        openBtn?.classList.remove('pulse');
+        setTimeout(() => $('#cf-navn')?.focus(), 400);
+      };
+      const closeContactForm = () => formWrap.classList.remove('open');
+
+      openBtn?.addEventListener('click', openContactForm);
+      cancelBtn?.addEventListener('click', closeContactForm);
+      // Anchor in topnav also opens the form
+      document.querySelectorAll('a[href="#kontakt"]').forEach(a => {
+        a.addEventListener('click', openContactForm);
       });
-    }
-    function openContactForm() {
-      document.getElementById('contactFormWrap').classList.add('open');
-      document.querySelector('.cta-open-btn').classList.remove('pulse');
-      setTimeout(() => document.getElementById('cf-navn').focus(), 400);
-    }
-    function closeContactForm() {
-      document.getElementById('contactFormWrap').classList.remove('open');
-    }
-    function submitContactForm(e) {
-      e.preventDefault();
-      const f = e.target;
-      const navn = f.navn.value.trim();
-      const festival = f.festival.value.trim();
-      const email = f.email.value.trim();
-      const tlf = f.telefon.value.trim();
-      const besked = f.besked.value.trim();
-      const subject = encodeURIComponent(`Demo-forespørgsel fra ${festival}`);
-      const body = encodeURIComponent(
-        `Hej LiveCloud,\n\n` +
-        `Jeg vil gerne høre mere om platformen.\n\n` +
-        `Navn: ${navn}\n` +
-        `Festival / organisation: ${festival}\n` +
-        `E-mail: ${email}\n` +
-        (tlf ? `Telefon: ${tlf}\n` : '') +
-        (besked ? `\n${besked}\n` : '') +
-        `\nVenlig hilsen,\n${navn}`
-      );
-      window.location.href = `mailto:kontakt@livecloud.dk?subject=${subject}&body=${body}`;
-    }
+
+      form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const f = e.target;
+        const navn = f.navn.value.trim();
+        const festival = f.festival.value.trim();
+        const email = f.email.value.trim();
+        const tlf = f.telefon.value.trim();
+        const besked = f.besked.value.trim();
+        const subject = encodeURIComponent(`Demo-forespørgsel fra ${festival}`);
+        const body = encodeURIComponent(
+          `Hej LiveCloud,\n\n` +
+          `Jeg vil gerne høre mere om platformen.\n\n` +
+          `Navn: ${navn}\n` +
+          `Festival / organisation: ${festival}\n` +
+          `E-mail: ${email}\n` +
+          (tlf ? `Telefon: ${tlf}\n` : '') +
+          (besked ? `\n${besked}\n` : '') +
+          `\nVenlig hilsen,\n${navn}`
+        );
+        window.location.href = `mailto:kontakt@livecloud.dk?subject=${subject}&body=${body}`;
+      });
+    })();
   </script>
 
   <div class="footer">
