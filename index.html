@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LiveCloud, festivalplatformen bygget af festivalfolk</title>
-<meta name="description" content="Det, der betyder noget, føles ikke kompliceret. Festivalplatformen bygget af festivalfolk: billet, Beats, armbånd, webshop, B2B og akkreditering, samlet ét sted.">
+<meta name="description" content="Festivalplatformen bygget af festivalfolk: billet, Beats, armbånd, webshop, B2B og akkreditering, samlet ét sted. Bevist i drift på Ringsted Festival 2026 med 26.000+ gæster og 30.000+ aktive brugere.">
 
 <link rel="canonical" href="https://livecloud.dk/">
 <link rel="alternate" hreflang="da" href="https://livecloud.dk/">
@@ -14,7 +14,7 @@
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="LiveCloud, festivalplatformen bygget af festivalfolk">
-<meta property="og:description" content="Det, der betyder noget, føles ikke kompliceret. Det rigtige system føles ubesværet. En festival er magiske øjeblikke: lyden, lyset, stemningen, vennerne. Når alt omkring spiller, sker resten af sig selv. Det er det grundlag, LiveCloud leverer på.">
+<meta property="og:description" content="Det, der betyder noget, føles ikke kompliceret. Det rigtige system føles ubesværet. Hele Ringsted Festival 2026 kørte på LiveCloud: 26.000+ gæster, 30.000+ aktive brugere, 73 barer og boder, ét system. Det er det grundlag, LiveCloud leverer på.">
 <meta property="og:url" content="https://livecloud.dk/">
 <meta property="og:image" content="https://livecloud.dk/photos/photo-hero.jpg">
 <meta property="og:image:width" content="1800">
@@ -25,7 +25,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LiveCloud, festivalplatformen">
-<meta name="twitter:description" content="Én platform til hele festivaloplevelsen. Billet, Beats, armbånd, webshop og B2B.">
+<meta name="twitter:description" content="Én platform til hele festivaloplevelsen. Billet, Beats, armbånd, webshop og B2B. Bevist på Ringsted Festival 2026.">
 <meta name="twitter:image" content="https://livecloud.dk/photos/photo-hero.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230F1117'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='url(%23g)' stroke-width='6'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F472B6'/%3E%3Cstop offset='1' stop-color='%23A78BFA'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
@@ -316,6 +316,206 @@
     .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
     .stat-item:nth-last-child(-n+2) { border-bottom: none; }
   }
+
+  /* ==== INTRO DECK (hurtig platformsintro, kort/slides) ==== */
+  .intro-deck { margin-bottom: 96px; }
+  .deck-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .deck-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .deck-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .deck {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 232px;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 12px;
+    margin: -4px -4px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .deck-card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .deck-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--card-accent, var(--accent));
+    transform: translateY(-2px);
+  }
+  .deck-card.blue { --card-accent: var(--accent); }
+  .deck-card.purple { --card-accent: var(--accent-purple); }
+  .deck-card.amber { --card-accent: var(--accent-amber); }
+  .deck-card.pink { --card-accent: var(--accent-pink); }
+  .deck-card.green { --card-accent: var(--accent-green); }
+  .deck-icon {
+    width: 38px; height: 38px; border-radius: 11px;
+    background: color-mix(in srgb, var(--card-accent, var(--accent)) 14%, transparent);
+    color: var(--card-accent, var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .deck-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+  }
+  .deck-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .deck-more {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--card-accent, var(--accent));
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  @media (max-width: 760px) {
+    .deck { grid-auto-columns: 78%; }
+    .deck-hint { display: none; }
+  }
+
+  /* ==== BRAND ROW (samme platform, flere brands) ==== */
+  .brand-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 64px;
+  }
+  .brand-row-head {
+    margin-top: 64px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    text-align: center;
+  }
+  .brand-row-head + .brand-row { margin-top: 40px; }
+  .brand-phone { margin: 0; text-align: center; }
+  .brand-phone figcaption {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .brand-phone figcaption strong {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  @media (max-width: 760px) {
+    .brand-row { grid-template-columns: 1fr; gap: 44px; }
+  }
+
+  /* Demo-app skærm (jeres brand, illustrativ) */
+  .demo-app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #0F1117;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 14px 16px;
+    gap: 12px;
+  }
+  .demo-app .demo-head {
+    text-align: center;
+    padding: 12px 0 4px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    background: linear-gradient(135deg, #34D399, #22D3EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .demo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .demo-chip {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    color: #0F1117;
+    background: #34D399;
+    border-radius: 999px;
+    padding: 3px 9px;
+    margin-bottom: 3px;
+  }
+  .demo-line { height: 9px; border-radius: 5px; background: rgba(255, 255, 255, 0.14); }
+  .demo-line.lg { width: 72%; height: 12px; background: rgba(255, 255, 255, 0.30); }
+  .demo-line.md { width: 55%; }
+  .demo-line.sm { width: 40%; background: rgba(255, 255, 255, 0.10); }
+  .demo-wallet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.16), rgba(34, 211, 238, 0.10));
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .demo-wallet strong { font-size: 18px; font-weight: 900; color: #7CF5C8; }
+  .demo-tabbar {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    padding: 12px 10px;
+  }
+  .demo-tabbar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); }
+  .demo-tabbar i.on { background: #34D399; }
+
+
+  /* ==== HERO PROOF LINE ==== */
+  .hero-proof {
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.2px;
+  }
+  .hero-proof strong { color: var(--text); font-weight: 700; }
 
   /* ==== SECTION ==== */
   .section { margin-bottom: 96px; }
@@ -1808,6 +2008,73 @@
       Book en demo
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+    <div class="hero-proof">Hele <strong>Ringsted Festival 2026</strong> kørte på LiveCloud &middot; 26.000+ gæster &middot; 73 barer og boder &middot; <strong>ét system</strong></div>
+  </div>
+
+  <!-- ==== INTRO DECK: platformen på ét minut ==== -->
+  <div class="intro-deck" id="oversigt" aria-label="LiveCloud på ét minut">
+    <div class="deck-head">
+      <div class="deck-title">LiveCloud på ét minut</div>
+      <div class="deck-hint">Vælg et kort, eller scroll og gå i dybden &rarr;</div>
+    </div>
+    <div class="deck">
+      <a class="deck-card blue" href="#platform">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>Én platform</h3>
+        <p>Billet, betaling, adgang og program i ét sammenhængende system. Ingen integrationer, der skal vedligeholdes.</p>
+        <span class="deck-more">Se platformen &darr;</span>
+      </a>
+      <a class="deck-card pink" href="#brand">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        </div>
+        <h3>Jeres egen app</h3>
+        <p>Gæsterne møder jeres festival, brandet i jeres navn. Direkte relation, uden mellemled.</p>
+        <span class="deck-more">Jeres brand &darr;</span>
+      </a>
+      <a class="deck-card amber" href="#beats">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5L14.5 14.5M14.5 9.5L9.5 14.5" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Beats</h3>
+        <p>Festivalens digitale valuta. Hurtigere betaling, kortere køer, højere omsætning per gæst.</p>
+        <span class="deck-more">Sådan virker Beats &darr;</span>
+      </a>
+      <a class="deck-card green" href="#resultater">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Bevist i 2026</h3>
+        <p>Hele Ringsted Festival kørte på LiveCloud: 26.000+ gæster, 30.000+ aktive brugere, 73 barer og boder, regnskab afstemt post for post.</p>
+        <span class="deck-more">Se resultaterne &darr;</span>
+      </a>
+      <a class="deck-card pink" href="#robusthed">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Plan A, B og C</h3>
+        <p>Mast nede? Gates åbne? Salget fortsætter, og overblikket består. Planerne overlapper og skaber et sikkerhedsnet.</p>
+        <span class="deck-more">Omstillingsevne &darr;</span>
+      </a>
+      <a class="deck-card purple" href="#pakken">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+        </div>
+        <h3>Hele løsningen</h3>
+        <p>Software, hardware og folk på pladsen. Én leverandør, ét ansvar, fuldt setup.</p>
+        <span class="deck-more">Den fulde pakke &darr;</span>
+      </a>
+      <a class="deck-card blue" href="#sikkerhed">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Sikkert fra bunden</h3>
+        <p>MitID-verificerede gæster, sortbørs lukket ned, GDPR på plads. Jeres data, i EU.</p>
+        <span class="deck-more">Sikkerhed &darr;</span>
+      </a>
+    </div>
   </div>
 
   <!-- ==== PHILOSOPHY INTRO (early anchor, as quote) ==== -->
@@ -1839,28 +2106,28 @@
     </ul>
   </div>
 
-  <!-- ==== STATS STRIP, platformens DNA ==== -->
+  <!-- ==== STATS STRIP, bevist i drift 2026 ==== -->
   <div class="stats-strip">
     <div class="stat-item">
-      <div class="stat-number">12</div>
-      <div class="stat-label">Komponenter</div>
+      <div class="stat-number">30.000+</div>
+      <div class="stat-label">Aktive brugere</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">200k</div>
-      <div class="stat-label">Gæster-kapacitet</div>
+      <div class="stat-number">73</div>
+      <div class="stat-label">Barer og boder</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">100%</div>
       <div class="stat-label">Auto-afstemning</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label">Real-time data</div>
+      <div class="stat-number">3 dage</div>
+      <div class="stat-label">Salg til afregning</div>
     </div>
   </div>
 
   <!-- ==== HVAD ER PLATFORMEN ==== -->
-  <div class="section">
+  <div class="section" id="platform">
     <div class="section-label">Platformen</div>
     <h2 class="section-title">Én platform, tre verdener.</h2>
     <p class="section-lead">Vi har bygget et sammenhængende system, der binder gæsten, arrangøren og crew'et sammen. Det samme backend, det samme Beats-regnskab, det samme billetarkiv, men med tre brugerflader, der er designet til hvert sit publikum.</p>
@@ -1914,7 +2181,7 @@
   </div>
 
   <!-- ==== JERES APP / BRAND OWNERSHIP ==== -->
-  <div class="section">
+  <div class="section" id="brand">
     <div class="section-label">Jeres brand, jeres relation</div>
     <h2 class="section-title">Jeres app. Jeres salgskanal. Jeres gæster.</h2>
     <p class="section-lead">LiveCloud leverer infrastrukturen. I ejer oplevelsen. Gæsterne møder jeres festival gennem jeres egen app og jeres egen storefront, brandet i jeres navn og identitet. Vi står ikke mellem jer og jeres gæster.</p>
@@ -1946,6 +2213,67 @@
         </ul>
       </div>
     </div>
+
+    <div class="brand-row-head">Samme platform under motorhjelmen. Jeres identitet udenpå.</div>
+    <div class="brand-row">
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <picture>
+                <source srcset="images/app-ringsted-billetter.webp" type="image/webp">
+                <img src="images/app-ringsted-billetter.jpg" alt="Ringsted Festival-appen: billet-karrusel med Klar til festival-status og Beats-saldo" width="662" height="1440" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Ringsted Festival 2026</strong>Billetter, klar til festival</figcaption>
+      </figure>
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <picture>
+                <source srcset="images/app-ringsted-program.webp" type="image/webp">
+                <img src="images/app-ringsted-program.jpg" alt="Ringsted Festival-appens program, fredag aften, med spilletider på tværs af syv scener" width="662" height="1440" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Ringsted Festival 2026</strong>Program, fredag aften</figcaption>
+      </figure>
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="demo-app" role="img" aria-label="Illustration: appen i jeres eget brand, med billet, Beats-saldo og program">
+                <div class="demo-head">JERES FESTIVAL</div>
+                <div class="demo-card">
+                  <span class="demo-chip">Klar til festival</span>
+                  <span class="demo-line lg"></span>
+                  <span class="demo-line md"></span>
+                  <span class="demo-line sm"></span>
+                </div>
+                <div class="demo-wallet">Beats-saldo <strong>250</strong></div>
+                <div class="demo-card">
+                  <span class="demo-line lg"></span>
+                  <span class="demo-line"></span>
+                  <span class="demo-line md"></span>
+                </div>
+                <div class="demo-tabbar"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Jeres festival</strong>Jeres navn, jeres farver, samme motor</figcaption>
+      </figure>
+    </div>
   </div>
 
   <!-- ==== REAL MOMENTS GALLERY (Festhallen / Bodegafesten 2026 proof shots) ==== -->
@@ -1955,7 +2283,7 @@
       <div class="moments-head">
         <div>
           <div class="moments-eyebrow">Sådan ser det ud i drift</div>
-          <h2 class="moments-title">Platformen er allerede bevist på pladsen.</h2>
+          <h2 class="moments-title">Platformen er bevist på pladsen.</h2>
         </div>
         <div class="moments-meta">Festhallen &middot; Bodegafesten 2026 &middot; foto: Chad T. Charlton</div>
       </div>
@@ -2061,50 +2389,73 @@
     </div>
   </div>
 
-  <!-- ==== PROJEKTIONER ==== -->
-  <div class="section">
+  <!-- ==== RESULTATER (dokumenteret drift, Ringsted Festival 2026) ==== -->
+  <div class="section" id="resultater">
     <div class="proof-wrap">
       <div class="proof-header">
-        <div class="proof-eyebrow">Projektion, Ringsted Festival 2026</div>
-        <h2 class="proof-title">Hvad platformen kan levere.</h2>
-        <p class="proof-desc">Nedenstående er baseret på dokumenteret performance fra tidligere drift af platformen. Estimaterne er konservative og tager udgangspunkt i 20.000 gæster over tre dage, fra 30. juli til 1. august 2026.</p>
+        <div class="proof-eyebrow">Dokumenteret, Ringsted Festival 2026</div>
+        <h2 class="proof-title">Hvad platformen leverede.</h2>
+        <p class="proof-desc">Fra 30. juli til 1. august 2026 kørte hele Ringsted Festival på LiveCloud: billetter, adgang, betaling, salg og regnskab. Ikke estimater, ikke løfter. Drift, dokumenteret og afstemt.</p>
       </div>
 
       <div class="proof-grid">
         <div class="proof-stat pink">
-          <div class="num">25&ndash;35 mio. kr.</div>
-          <div class="lbl"><strong>Forventet omsætning</strong> processeret gennem platformen over tre dage</div>
+          <div class="num">26.000+</div>
+          <div class="lbl"><strong>Gæster</strong> gennem gates, barer og boder over tre dage. Én platform, ingen sidesystemer.</div>
         </div>
         <div class="proof-stat blue">
-          <div class="num">150.000+</div>
-          <div class="lbl"><strong>Ordrer</strong> håndteret på tværs af alle festivaldage</div>
+          <div class="num">73</div>
+          <div class="lbl"><strong>Barer og boder</strong> afviklet på ét system, med live overblik per bod, per time og per produkt</div>
         </div>
         <div class="proof-stat purple">
-          <div class="num">Næsten 100%</div>
-          <div class="lbl"><strong>App-adoption.</strong> Gæsterne bruger appen som primær adgang, pung og program. Øvrige håndteres via chip-armbånd, så alle er i samme system.</div>
+          <div class="num">30.000+</div>
+          <div class="lbl"><strong>Aktive brugere</strong> på platformen. Appen som adgang, pung og program, chip-armbånd til resten. Hver eneste gæst i samme system.</div>
         </div>
         <div class="proof-stat amber">
-          <div class="num">25.000+/time</div>
-          <div class="lbl"><strong>Peak-kapacitet</strong> på tværs af ca. 50 boder. Designet til at håndtere belastningen, når trykket er størst.</div>
+          <div class="num">Hver krone</div>
+          <div class="lbl"><strong>Processeret, sporet og afstemt</strong> gennem platformen: billetsalg, Beats og terminaler. Stabil drift, også når trykket var størst.</div>
         </div>
         <div class="proof-stat green">
           <div class="num">100%</div>
-          <div class="lbl"><strong>Automatisk afstemning</strong> af Beats og PSP-transaktioner</div>
+          <div class="lbl"><strong>Automatisk afstemning</strong> af Beats- og PSP-transaktioner, post for post mod bank og indløser</div>
         </div>
         <div class="proof-stat blue">
-          <div class="num">Real-time</div>
-          <div class="lbl"><strong>Live dashboards</strong> per bar, per time og per produkt, med fuldt overblik for arrangøren</div>
+          <div class="num">3 dage</div>
+          <div class="lbl"><strong>Fra sidste salg til alle 73 boder var afregnet.</strong> Komplet revisorpakke inden for en uge.</div>
         </div>
       </div>
 
       <div class="proof-quote">
-        <strong>Sådan er tallene fremkommet:</strong> Projektionerne er baseret på platformens dokumenterede performance og bygget konservativt. 100% platform-dækning er ikke et ønskemål, det er en forudsætning: uden profil og aktiv billet kommer man ikke ind på pladsen. Gæster uden smartphone får et chip-armbånd ved Service Desk. Resultaterne leveres med fuld PSP-afstemning, så I kan lukke bøgerne uden manuelt efterarbejde.
+        <strong>Sådan er tallene opgjort:</strong> Alt stammer fra festivalens afslutningsregnskab, afstemt post for post mod bank og betalingsindløser. 100% platform-dækning var ikke et mål, det var en forudsætning: uden profil og aktiv billet kom man ikke ind på pladsen. Gæster uden smartphone fik et chip-armbånd ved Service Desk. Da festivalen lukkede, blev ubrugte Beats automatisk betalt tilbage til gæsterne. Regnskabet stemte. Det gør det hver gang.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== OMSTILLINGSEVNE / PLAN A, B, C ==== -->
+  <div class="section" id="robusthed">
+    <div class="section-label">Omstillingsevne</div>
+    <h2 class="section-title">Festivalen stopper ikke, fordi en mast går ned.</h2>
+    <p class="section-lead">Omgivelserne kan man ikke styre. Mobilmaster går ned, netværk falder ud, og spidsbelastning opfører sig aldrig som planlagt. Derfor er platformen bygget med plan A, B og C, og planerne overlapper, så der altid ligger et sikkerhedsnet under drift, salg og sikkerhed.</p>
+    <div class="benefit-split">
+      <div class="narrative">
+        <p>Går en mobilmast ned midt i afviklingen, fortsætter salget. <strong>POS-enhederne kører videre offline</strong>, transaktionerne synkroniseres når forbindelsen er tilbage, og gæsterne mærker ingenting. Driften er tilbage på sporet, før de fleste opdager, at noget var galt.</p>
+        <p>Åbnes gates uden adgangskontrol, fx for at lette trykket i en spidsbelastning, <strong>flytter adgangspunktet automatisk fra gaten til første køb ved en bod</strong>. Overblikket forsvinder ikke, det skifter kilde. Vi ved stadig, hvor mange der er på pladsen, og hvordan flowet bevæger sig.</p>
+        <p>Og bag systemerne står <strong>et team, der arbejder på pladsen under hele afviklingen</strong>. Når virkeligheden ændrer sig, omstiller vi os med den. Det er ikke en nødplan, det er sådan, platformen er designet.</p>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Det betyder</div>
+        <ul>
+          <li>Salg og sikkerhed er altid på plads, også når&nbsp;infrastrukturen&nbsp;svigter</li>
+          <li>Overlappende planer, ét sikkerhedsnet, ingen&nbsp;enkelt&nbsp;fejlkilde</li>
+          <li>Altid det bedste grundlag for at vide, hvor mange&nbsp;der&nbsp;er&nbsp;på&nbsp;pladsen</li>
+          <li>Driften tilbage på sporet, uden at gæsterne&nbsp;mærker&nbsp;det</li>
+        </ul>
       </div>
     </div>
   </div>
 
   <!-- ==== HELE LØSNINGEN ==== -->
-  <div class="section">
+  <div class="section" id="pakken">
     <div class="section-label">Den fulde pakke</div>
     <h2 class="section-title">Vi leverer hele løsningen, også hardware</h2>
     <p class="section-lead">Én leverandør, ét ansvar, fuldt setup. Vi står bag det hele, fra koden under motorhjelmen til det armbånd, gæsten får om håndleddet. Ingen tredjepartsleverandører at koordinere, ingen integrationer at vedligeholde, ingen grå zoner når noget skal løses på pladsen.</p>
@@ -2275,7 +2626,7 @@
   </div>
 
   <!-- ==== BEATS DEDICATED ==== -->
-  <div class="section">
+  <div class="section" id="beats">
     <div class="beats-section with-phone">
       <div>
         <div class="section-label" style="color: var(--accent-amber);">Digital valuta</div>
@@ -2291,8 +2642,8 @@
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <picture>
-              <source srcset="images/app-beats.webp" type="image/webp">
-              <img src="images/app-beats.jpg" alt="Beats-saldo tanket op i appen, klar til betaling i barer og boder" width="331" height="720" loading="lazy" decoding="async">
+              <source srcset="images/app-ringsted-beats.webp" type="image/webp">
+              <img src="images/app-ringsted-beats.jpg" alt="Beats-skærmen i Ringsted Festival-appen: saldo og optankning med ét tryk" width="331" height="720" loading="lazy" decoding="async">
             </picture>
           </div>
         </div>
@@ -2320,7 +2671,7 @@
   </div>
 
   <!-- ==== SIKKERHED & COMPLIANCE ==== -->
-  <div class="section">
+  <div class="section" id="sikkerhed">
     <div class="security-wrap">
       <div>
         <div class="section-label">Sikkerhed &amp; compliance</div>
@@ -2403,13 +2754,13 @@
 
   <!-- ==== RINGSTED FEATURE (reference customer) ==== -->
   <div class="section">
-    <div class="section-label">Første store udrulning</div>
+    <div class="section-label">Reference: gennemført 2026</div>
     <div class="ringsted-feature">
       <div>
         <h3>Ringsted Festival 2026,<br>i det 125 år gamle Lystanlæg.</h3>
-        <p>Siden 2005 har Ringsted Festival manifesteret sig som et <strong>kærligt og festligt møde mellem alle aldre og personligheder</strong>. 30. juli til 1. august 2026 lyses Lystanlægget op af tusindvis af kulørte lamper langs stierne og ved søerne.</p>
+        <p>Siden 2005 har Ringsted Festival manifesteret sig som et <strong>kærligt og festligt møde mellem alle aldre og personligheder</strong>. Fra 30. juli til 1. august 2026 blev Lystanlægget lyst op af tusindvis af kulørte lamper langs stierne og ved søerne.</p>
         <p>Egenproducerede træhytter med dans på bordene, food trucks med alverdens mad, et væld af barer, og finurlige oaser med gyngende borde, liggestole og loungemiljøer under trækronerne.</p>
-        <p>Platformen skal ligge under det hele, <strong>helt usynligt</strong>, og give plads til dét, festivalen er.</p>
+        <p>Platformen lå under det hele, <strong>helt usynligt</strong>, og gav plads til dét, festivalen er. Billet, adgang, Beats, salg og regnskab kørte på LiveCloud fra første billet til færdig afregning.</p>
       </div>
       <div class="ringsted-stats">
         <div class="ringsted-stat">
@@ -2425,7 +2776,7 @@
           <div class="lbl">Uge 31, 30. juli til 1. august</div>
         </div>
         <div class="ringsted-stat">
-          <div class="num">50+</div>
+          <div class="num">73</div>
           <div class="lbl">Barer og boder på tværs af pladsen</div>
         </div>
       </div>

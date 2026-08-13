@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LiveCloud — the festival platform built by festival people</title>
-<meta name="description" content="What matters doesn't have to feel complicated. The festival platform built by festival people: tickets, Beats, wristbands, webshop, B2B and accreditation — all in one place.">
+<meta name="description" content="The festival platform built by festival people: tickets, Beats, wristbands, webshop, B2B and accreditation, all in one place. Proven in live operation at Ringsted Festival 2026 with 26,000+ guests and 30,000+ active users.">
 
 <link rel="canonical" href="https://livecloud.dk/en/">
 <link rel="alternate" hreflang="da" href="https://livecloud.dk/">
@@ -14,7 +14,7 @@
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="LiveCloud — the festival platform built by festival people">
-<meta property="og:description" content="What matters doesn't have to feel complicated. The right system feels effortless. A festival is moments of magic: the sound, the lights, the crowd, the friends. When everything around it works, the rest takes care of itself. That's the foundation LiveCloud delivers.">
+<meta property="og:description" content="What matters doesn't have to feel complicated. The right system feels effortless. All of Ringsted Festival 2026 ran on LiveCloud: 26,000+ guests, 30,000+ active users, 73 bars and stands, one system. That's the foundation LiveCloud delivers.">
 <meta property="og:url" content="https://livecloud.dk/en/">
 <meta property="og:image" content="https://livecloud.dk/photos/photo-hero.jpg">
 <meta property="og:image:width" content="1800">
@@ -26,7 +26,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LiveCloud — festival platform">
-<meta name="twitter:description" content="One platform for the whole festival experience. Tickets, Beats, wristbands, webshop and B2B.">
+<meta name="twitter:description" content="One platform for the whole festival experience. Tickets, Beats, wristbands, webshop and B2B. Proven at Ringsted Festival 2026.">
 <meta name="twitter:image" content="https://livecloud.dk/photos/photo-hero.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230F1117'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='url(%23g)' stroke-width='6'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F472B6'/%3E%3Cstop offset='1' stop-color='%23A78BFA'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
@@ -317,6 +317,206 @@
     .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
     .stat-item:nth-last-child(-n+2) { border-bottom: none; }
   }
+
+  /* ==== INTRO DECK (quick platform intro, cards/slides) ==== */
+  .intro-deck { margin-bottom: 96px; }
+  .deck-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .deck-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .deck-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .deck {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 232px;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 12px;
+    margin: -4px -4px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .deck-card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+  }
+  .deck-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--card-accent, var(--accent));
+    transform: translateY(-2px);
+  }
+  .deck-card.blue { --card-accent: var(--accent); }
+  .deck-card.purple { --card-accent: var(--accent-purple); }
+  .deck-card.amber { --card-accent: var(--accent-amber); }
+  .deck-card.pink { --card-accent: var(--accent-pink); }
+  .deck-card.green { --card-accent: var(--accent-green); }
+  .deck-icon {
+    width: 38px; height: 38px; border-radius: 11px;
+    background: color-mix(in srgb, var(--card-accent, var(--accent)) 14%, transparent);
+    color: var(--card-accent, var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .deck-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+  }
+  .deck-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .deck-more {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--card-accent, var(--accent));
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  @media (max-width: 760px) {
+    .deck { grid-auto-columns: 78%; }
+    .deck-hint { display: none; }
+  }
+
+  /* ==== BRAND ROW (same platform, multiple brands) ==== */
+  .brand-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 64px;
+  }
+  .brand-row-head {
+    margin-top: 64px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    text-align: center;
+  }
+  .brand-row-head + .brand-row { margin-top: 40px; }
+  .brand-phone { margin: 0; text-align: center; }
+  .brand-phone figcaption {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .brand-phone figcaption strong {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  @media (max-width: 760px) {
+    .brand-row { grid-template-columns: 1fr; gap: 44px; }
+  }
+
+  /* Demo app screen (your brand, illustrative) */
+  .demo-app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #0F1117;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 14px 16px;
+    gap: 12px;
+  }
+  .demo-app .demo-head {
+    text-align: center;
+    padding: 12px 0 4px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    background: linear-gradient(135deg, #34D399, #22D3EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .demo-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .demo-chip {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    color: #0F1117;
+    background: #34D399;
+    border-radius: 999px;
+    padding: 3px 9px;
+    margin-bottom: 3px;
+  }
+  .demo-line { height: 9px; border-radius: 5px; background: rgba(255, 255, 255, 0.14); }
+  .demo-line.lg { width: 72%; height: 12px; background: rgba(255, 255, 255, 0.30); }
+  .demo-line.md { width: 55%; }
+  .demo-line.sm { width: 40%; background: rgba(255, 255, 255, 0.10); }
+  .demo-wallet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.16), rgba(34, 211, 238, 0.10));
+    border: 1px solid rgba(52, 211, 153, 0.30);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .demo-wallet strong { font-size: 18px; font-weight: 900; color: #7CF5C8; }
+  .demo-tabbar {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    padding: 12px 10px;
+  }
+  .demo-tabbar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); }
+  .demo-tabbar i.on { background: #34D399; }
+
+
+  /* ==== HERO PROOF LINE ==== */
+  .hero-proof {
+    margin-top: 22px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.2px;
+  }
+  .hero-proof strong { color: var(--text); font-weight: 700; }
 
   /* ==== SECTION ==== */
   .section { margin-bottom: 96px; }
@@ -1809,6 +2009,73 @@
       Book a demo
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
+    <div class="hero-proof">All of <strong>Ringsted Festival 2026</strong> ran on LiveCloud &middot; 26,000+ guests &middot; 73 bars and stands &middot; <strong>one system</strong></div>
+  </div>
+
+  <!-- ==== INTRO DECK: the platform in one minute ==== -->
+  <div class="intro-deck" id="oversigt" aria-label="LiveCloud in one minute">
+    <div class="deck-head">
+      <div class="deck-title">LiveCloud in one minute</div>
+      <div class="deck-hint">Pick a card, or scroll on for the full story &rarr;</div>
+    </div>
+    <div class="deck">
+      <a class="deck-card blue" href="#platform">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>One platform</h3>
+        <p>Ticket, payment, access and programme in one coherent system. No integrations to maintain.</p>
+        <span class="deck-more">See the platform &darr;</span>
+      </a>
+      <a class="deck-card pink" href="#brand">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        </div>
+        <h3>Your own app</h3>
+        <p>Guests meet your festival, branded in your name. A direct relationship, no middleman.</p>
+        <span class="deck-more">Your brand &darr;</span>
+      </a>
+      <a class="deck-card amber" href="#beats">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5L14.5 14.5M14.5 9.5L9.5 14.5" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Beats</h3>
+        <p>The festival's digital currency. Faster payments, shorter queues, higher spend per guest.</p>
+        <span class="deck-more">How Beats works &darr;</span>
+      </a>
+      <a class="deck-card green" href="#resultater">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Proven in 2026</h3>
+        <p>All of Ringsted Festival ran on LiveCloud: 26,000+ guests, 30,000+ active users, 73 bars and stands, books reconciled line by line.</p>
+        <span class="deck-more">See the results &darr;</span>
+      </a>
+      <a class="deck-card pink" href="#robusthed">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Plan A, B and C</h3>
+        <p>Tower down? Gates open? Sales continue and the overview holds. The plans overlap and form a safety net.</p>
+        <span class="deck-more">Adaptability &darr;</span>
+      </a>
+      <a class="deck-card purple" href="#pakken">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+        </div>
+        <h3>The full solution</h3>
+        <p>Software, hardware and people on the ground. One supplier, one responsibility, full setup.</p>
+        <span class="deck-more">The full package &darr;</span>
+      </a>
+      <a class="deck-card blue" href="#sikkerhed">
+        <div class="deck-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Secure by design</h3>
+        <p>Verified guest identities, ticket scalping shut down, GDPR in place. Your data, hosted in the EU.</p>
+        <span class="deck-more">Security &darr;</span>
+      </a>
+    </div>
   </div>
 
   <!-- ==== PHILOSOPHY INTRO (early anchor, as quote) ==== -->
@@ -1840,28 +2107,28 @@
     </ul>
   </div>
 
-  <!-- ==== STATS STRIP, the platform's DNA ==== -->
+  <!-- ==== STATS STRIP, proven in live operation 2026 ==== -->
   <div class="stats-strip">
     <div class="stat-item">
-      <div class="stat-number">12</div>
-      <div class="stat-label">Components</div>
+      <div class="stat-number">30,000+</div>
+      <div class="stat-label">Active users</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">200k</div>
-      <div class="stat-label">Guest capacity</div>
+      <div class="stat-number">73</div>
+      <div class="stat-label">Bars and stands</div>
     </div>
     <div class="stat-item">
       <div class="stat-number">100%</div>
       <div class="stat-label">Auto-reconciliation</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label">Real-time data</div>
+      <div class="stat-number">3 days</div>
+      <div class="stat-label">Sales to settlement</div>
     </div>
   </div>
 
   <!-- ==== WHAT IS THE PLATFORM ==== -->
-  <div class="section">
+  <div class="section" id="platform">
     <div class="section-label">The platform</div>
     <h2 class="section-title">One platform, three worlds.</h2>
     <p class="section-lead">We've built a single, connected system that ties the guest, the organiser and the crew together. The same backend, the same Beats ledger, the same ticket archive — but with three interfaces, each designed for its own audience.</p>
@@ -1915,7 +2182,7 @@
   </div>
 
   <!-- ==== YOUR APP / BRAND OWNERSHIP ==== -->
-  <div class="section">
+  <div class="section" id="brand">
     <div class="section-label">Your brand, your relationship</div>
     <h2 class="section-title">Your app. Your sales channel. Your guests.</h2>
     <p class="section-lead">LiveCloud delivers the infrastructure. You own the experience. Guests meet your festival through your own app and your own storefront, branded in your name and identity. We don't stand between you and your guests.</p>
@@ -1947,6 +2214,67 @@
         </ul>
       </div>
     </div>
+
+    <div class="brand-row-head">Same platform under the hood. Your identity on the outside.</div>
+    <div class="brand-row">
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <picture>
+                <source srcset="../images/app-ringsted-billetter.webp" type="image/webp">
+                <img src="../images/app-ringsted-billetter.jpg" alt="The Ringsted Festival app: ticket carousel with Ready for festival status and Beats balance" width="662" height="1440" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Ringsted Festival 2026</strong>Tickets, ready for the festival</figcaption>
+      </figure>
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <picture>
+                <source srcset="../images/app-ringsted-program.webp" type="image/webp">
+                <img src="../images/app-ringsted-program.jpg" alt="The Ringsted Festival app's programme, Friday night, with set times across seven stages" width="662" height="1440" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Ringsted Festival 2026</strong>Programme, Friday night</figcaption>
+      </figure>
+      <figure class="brand-phone">
+        <div class="phone-mockup sm">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-frame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="demo-app" role="img" aria-label="Illustration: the app in your own brand, with ticket, Beats balance and programme">
+                <div class="demo-head">YOUR FESTIVAL</div>
+                <div class="demo-card">
+                  <span class="demo-chip">Ready for festival</span>
+                  <span class="demo-line lg"></span>
+                  <span class="demo-line md"></span>
+                  <span class="demo-line sm"></span>
+                </div>
+                <div class="demo-wallet">Beats balance <strong>250</strong></div>
+                <div class="demo-card">
+                  <span class="demo-line lg"></span>
+                  <span class="demo-line"></span>
+                  <span class="demo-line md"></span>
+                </div>
+                <div class="demo-tabbar"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption><strong>Your festival</strong>Your name, your colours, same engine</figcaption>
+      </figure>
+    </div>
   </div>
 
   <!-- ==== REAL MOMENTS GALLERY (Festhallen / Bodegafesten 2026 proof shots) ==== -->
@@ -1956,7 +2284,7 @@
       <div class="moments-head">
         <div>
           <div class="moments-eyebrow">This is what it looks like, live</div>
-          <h2 class="moments-title">The platform is already proven on the ground.</h2>
+          <h2 class="moments-title">The platform is proven on the ground.</h2>
         </div>
         <div class="moments-meta">Festhallen &middot; Bodegafesten 2026 &middot; photo: Chad T. Charlton</div>
       </div>
@@ -2062,50 +2390,73 @@
     </div>
   </div>
 
-  <!-- ==== PROJECTIONS ==== -->
-  <div class="section">
+  <!-- ==== RESULTS (documented live operation, Ringsted Festival 2026) ==== -->
+  <div class="section" id="resultater">
     <div class="proof-wrap">
       <div class="proof-header">
-        <div class="proof-eyebrow">Projection, Ringsted Festival 2026</div>
-        <h2 class="proof-title">What the platform can deliver.</h2>
-        <p class="proof-desc">The numbers below are based on documented performance from previous live operation of the platform. Estimates are conservative and assume 20,000 guests over three days, 30 July to 1 August 2026.</p>
+        <div class="proof-eyebrow">Documented, Ringsted Festival 2026</div>
+        <h2 class="proof-title">What the platform delivered.</h2>
+        <p class="proof-desc">From 30 July to 1 August 2026, all of Ringsted Festival ran on LiveCloud: tickets, access, payments, sales and accounting. Not estimates, not promises. Live operation, documented and reconciled.</p>
       </div>
 
       <div class="proof-grid">
         <div class="proof-stat pink">
-          <div class="num">DKK 25&ndash;35M</div>
-          <div class="lbl"><strong>Projected revenue</strong> processed through the platform over three days</div>
+          <div class="num">26,000+</div>
+          <div class="lbl"><strong>Guests</strong> through gates, bars and stands over three days. One platform, no side systems.</div>
         </div>
         <div class="proof-stat blue">
-          <div class="num">150,000+</div>
-          <div class="lbl"><strong>Orders</strong> handled across all festival days</div>
+          <div class="num">73</div>
+          <div class="lbl"><strong>Bars and stands</strong> run on one system, with live visibility per stand, per hour and per product</div>
         </div>
         <div class="proof-stat purple">
-          <div class="num">Near 100%</div>
-          <div class="lbl"><strong>App adoption.</strong> Guests use the app as their primary access, wallet and programme. The rest are handled via NFC wristbands, so everyone is in the same system.</div>
+          <div class="num">30,000+</div>
+          <div class="lbl"><strong>Active users</strong> on the platform. The app as access, wallet and programme, NFC wristbands for the rest. Every single guest in the same system.</div>
         </div>
         <div class="proof-stat amber">
-          <div class="num">25,000+/hour</div>
-          <div class="lbl"><strong>Peak capacity</strong> across roughly 50 stands. Designed to handle the load when pressure is highest.</div>
+          <div class="num">Every krone</div>
+          <div class="lbl"><strong>Processed, tracked and reconciled</strong> through the platform: ticket sales, Beats and terminals. Stable operation, including at peak load.</div>
         </div>
         <div class="proof-stat green">
           <div class="num">100%</div>
-          <div class="lbl"><strong>Automatic reconciliation</strong> of Beats and PSP transactions</div>
+          <div class="lbl"><strong>Automatic reconciliation</strong> of Beats and PSP transactions, line by line against bank and acquirer</div>
         </div>
         <div class="proof-stat blue">
-          <div class="num">Real-time</div>
-          <div class="lbl"><strong>Live dashboards</strong> per bar, per hour and per product, with full visibility for the organiser</div>
+          <div class="num">3 days</div>
+          <div class="lbl"><strong>From last sale to all 73 vendors settled.</strong> Complete accounting package within a week.</div>
         </div>
       </div>
 
       <div class="proof-quote">
-        <strong>How the numbers were derived:</strong> The projections are based on the platform's documented performance and built conservatively. 100% platform coverage isn't a stretch goal — it's a precondition: no profile and no active ticket, no entry to the festival. Guests without a smartphone get an NFC wristband at the Service Desk. Results are delivered with full PSP reconciliation, so you can close the books without manual rework.
+        <strong>How the numbers are compiled:</strong> Everything comes from the festival's closing accounts, reconciled line by line against bank and payment acquirer. 100% platform coverage wasn't a goal, it was a precondition: no profile and no active ticket, no entry to the festival. Guests without a smartphone got an NFC wristband at the Service Desk. When the festival closed, unused Beats were automatically paid back to guests. The books balanced. They do every time.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== ADAPTABILITY / PLAN A, B, C ==== -->
+  <div class="section" id="robusthed">
+    <div class="section-label">Adaptability</div>
+    <h2 class="section-title">The festival doesn't stop because a cell tower goes down.</h2>
+    <p class="section-lead">You can't control the surroundings. Cell towers fail, networks drop, and peak load never behaves as planned. That's why the platform is built with plan A, B and C, and the plans overlap, so there's always a safety net under operations, sales and safety.</p>
+    <div class="benefit-split">
+      <div class="narrative">
+        <p>If a cell tower goes down mid-event, sales continue. <strong>The POS units keep running offline</strong>, transactions sync once the connection returns, and guests notice nothing. Operations are back on track before most people realise anything was wrong.</p>
+        <p>If gates are opened without access control, for instance to ease pressure at peak, <strong>the access point automatically moves from the gate to the first purchase at a stand</strong>. The overview doesn't disappear, it switches source. We still know how many people are on the grounds and how the flow is moving.</p>
+        <p>And behind the systems stands <strong>a team working on the grounds throughout the event</strong>. When reality changes, we adapt with it. That's not a contingency plan, that's how the platform is designed.</p>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">What that means</div>
+        <ul>
+          <li>Sales and safety always in place, even when&nbsp;infrastructure&nbsp;fails</li>
+          <li>Overlapping plans, one safety net, no single&nbsp;point&nbsp;of&nbsp;failure</li>
+          <li>Always the best possible picture of how many people&nbsp;are&nbsp;on&nbsp;site</li>
+          <li>Operations back on track without guests&nbsp;noticing</li>
+        </ul>
       </div>
     </div>
   </div>
 
   <!-- ==== FULL SOLUTION ==== -->
-  <div class="section">
+  <div class="section" id="pakken">
     <div class="section-label">The full package</div>
     <h2 class="section-title">We deliver the whole solution, hardware included</h2>
     <p class="section-lead">One supplier, one responsibility, a full setup. We're behind all of it — from the code under the hood to the wristband the guest puts on. No third-party suppliers to coordinate, no integrations to maintain, no grey zones when something needs solving on the ground.</p>
@@ -2276,7 +2627,7 @@
   </div>
 
   <!-- ==== BEATS DEDICATED ==== -->
-  <div class="section">
+  <div class="section" id="beats">
     <div class="beats-section with-phone">
       <div>
         <div class="section-label" style="color: var(--accent-amber);">Digital currency</div>
@@ -2292,8 +2643,8 @@
           <div class="phone-notch"></div>
           <div class="phone-screen">
             <picture>
-              <source srcset="../images/app-beats.webp" type="image/webp">
-              <img src="../images/app-beats.jpg" alt="Beats balance topped up in the app, ready to pay at bars and stands" width="331" height="720" loading="lazy" decoding="async">
+              <source srcset="../images/app-ringsted-beats.webp" type="image/webp">
+              <img src="../images/app-ringsted-beats.jpg" alt="The Beats screen in the Ringsted Festival app: balance and one-tap top-up" width="331" height="720" loading="lazy" decoding="async">
             </picture>
           </div>
         </div>
@@ -2321,7 +2672,7 @@
   </div>
 
   <!-- ==== SECURITY & COMPLIANCE ==== -->
-  <div class="section">
+  <div class="section" id="sikkerhed">
     <div class="security-wrap">
       <div>
         <div class="section-label">Security &amp; compliance</div>
@@ -2404,13 +2755,13 @@
 
   <!-- ==== RINGSTED FEATURE (reference customer) ==== -->
   <div class="section">
-    <div class="section-label">First major rollout</div>
+    <div class="section-label">Reference: delivered 2026</div>
     <div class="ringsted-feature">
       <div>
         <h3>Ringsted Festival 2026,<br>in the 125-year-old Lystanlæg park.</h3>
-        <p>Since 2005, Ringsted Festival has been a <strong>warm, festive meeting place for every age and every walk of life</strong>. From 30 July to 1 August 2026, the Lystanlæg lights up with thousands of coloured bulbs along the paths and around the lakes.</p>
+        <p>Since 2005, Ringsted Festival has been a <strong>warm, festive meeting place for every age and every walk of life</strong>. From 30 July to 1 August 2026, the Lystanlæg was lit up by thousands of coloured bulbs along the paths and around the lakes.</p>
         <p>Hand-built wooden cabins with dancing on the tables, food trucks with cuisines from across the world, a wealth of bars, and quirky oases with swing tables, deck chairs and lounge corners under the trees.</p>
-        <p>The platform should sit underneath it all, <strong>completely invisible</strong>, and make room for what the festival is.</p>
+        <p>The platform sat underneath it all, <strong>completely invisible</strong>, and made room for what the festival is. Tickets, access, Beats, sales and accounting ran on LiveCloud from the first ticket to the final settlement.</p>
       </div>
       <div class="ringsted-stats">
         <div class="ringsted-stat">
@@ -2426,7 +2777,7 @@
           <div class="lbl">Week 31, 30 July to 1 August</div>
         </div>
         <div class="ringsted-stat">
-          <div class="num">50+</div>
+          <div class="num">73</div>
           <div class="lbl">Bars and stands across the grounds</div>
         </div>
       </div>
