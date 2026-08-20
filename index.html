@@ -128,6 +128,19 @@
 
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
+  /* ==== LINKS: aldrig browser-blå ==== */
+  a { color: var(--text); }
+  .section-lead a, .narrative a, .outcome-box ul li a, p a, li a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 3px;
+  }
+  .section-lead a:hover, .narrative a:hover, .outcome-box ul li a:hover, p a:hover, li a:hover {
+    text-decoration-color: var(--text);
+  }
+  .feat a, a.feat, a.hero-cta, a.btn-primary, a.btn-secondary { text-decoration: none; }
+
   /* ==== TOP NAV ==== */
   .topnav {
     padding: 20px 0;
@@ -1969,6 +1982,11 @@
     .ringsted-feature h3 { font-size: 22px; }
     .ringsted-stat .num { font-size: 22px; }
   }
+
+  /* ==== LINKFARVER, sidst så de vinder over .topnav a og .footer a ==== */
+  a.logo { color: var(--text); }
+  .footer a { color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
+  .footer a:hover { text-decoration-color: var(--text); }
 </style>
 </head>
 <body>
