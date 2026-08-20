@@ -1986,6 +1986,15 @@
   a.logo { color: var(--text); }
   .footer a { color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
   .footer a:hover { text-decoration-color: var(--text); }
+
+  /* ==== MOBIL: statistiktal må ikke klippes ==== */
+  @media (max-width: 520px) {
+    .stat-number { font-size: 24px; letter-spacing: -0.3px; }
+    .stat-label { font-size: 11px; }
+  }
+  @media (max-width: 360px) {
+    .stat-number { font-size: 20px; }
+  }
 </style>
   <!-- BACKUP: The complete page with all content. Kept as the source for the subpages and as a backup from when the front page was simplified on 19 August 2026. -->
   <meta name="robots" content="noindex, nofollow">

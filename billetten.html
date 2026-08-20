@@ -1985,6 +1985,15 @@
   a.logo { color: var(--text); }
   .footer a { color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); text-underline-offset: 3px; }
   .footer a:hover { text-decoration-color: var(--text); }
+
+  /* ==== MOBIL: statistiktal må ikke klippes ==== */
+  @media (max-width: 520px) {
+    .stat-number { font-size: 24px; letter-spacing: -0.3px; }
+    .stat-label { font-size: 11px; }
+  }
+  @media (max-width: 360px) {
+    .stat-number { font-size: 20px; }
+  }
 </style>
   <!-- BACKUP: Den komplette side med alt indhold. Bevaret som kilde til undersiderne og som backup, da forsiden blev forenklet 19. august 2026. -->
   <meta name="robots" content="noindex, nofollow">
