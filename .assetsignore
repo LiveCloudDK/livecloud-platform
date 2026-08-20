@@ -1,0 +1,16 @@
+.git
+.git/**
+.claude
+.claude/**
+.github
+.github/**
+node_modules
+node_modules/**
+.assetsignore
+.gitignore
+wrangler.jsonc
+package.json
+package-lock.json
+*.md
+.wrangler
+.wrangler/**
