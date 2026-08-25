@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LiveCloud · storskærm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080C; --text:#F5F6FA; --muted:#A6ADC0; --dim:#6B7288;
+  --accent:#C77BFF; --accent2:#FF7BC7; --green:#5CB77A;
+  /* Alt skalerer med skærmbredden, så det samme layout virker paa
+     en 24-tommer og en 85-tommer uden at blive rettet. */
+  --u: clamp(10px, 1.05vw, 26px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text)}
+body{font-family:'Inter',-apple-system,sans-serif;cursor:none;
+  -webkit-font-smoothing:antialiased}
+
+.scene{position:fixed;inset:0;opacity:0;transition:opacity 1.1s ease;
+  display:flex;align-items:center;justify-content:center;pointer-events:none}
+.scene.on{opacity:1}
+
+/* fotobaggrund med langsom bevægelse, saa stillbilleder ikke doer paa skaermen */
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.06);transition:transform 11s linear;will-change:transform}
+.scene.on .bg{transform:scale(1.16) translate(var(--dx,-1%), var(--dy,-1%))}
+.veil{position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(7,8,12,.96) 0%,rgba(7,8,12,.9) 38%,rgba(7,8,12,.55) 66%,rgba(7,8,12,.35) 100%),
+  linear-gradient(180deg,rgba(7,8,12,.5) 0%,transparent 30%,transparent 62%,rgba(7,8,12,.8) 100%)}
+
+.inner{position:relative;z-index:2;width:min(88vw,calc(var(--u)*62));text-align:left;
+  margin-right:auto;margin-left:6vw}
+.scene:has(.slut) .inner, .inner.slut{margin:0 auto}
+.kicker{font-family:'Space Grotesk',monospace;font-size:calc(var(--u)*1.05);
+  letter-spacing:calc(var(--u)*.14);text-transform:uppercase;color:var(--accent);
+  margin-bottom:calc(var(--u)*1.1);opacity:0;transform:translateY(14px);
+  transition:all .8s ease .25s}
+h1{font-size:calc(var(--u)*4.6);font-weight:900;letter-spacing:-.02em;line-height:1.03;
+  opacity:0;transform:translateY(22px);transition:all .9s ease .4s}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:calc(var(--u)*1.5);color:var(--muted);margin-top:calc(var(--u)*1.3);
+  max-width:52ch;line-height:1.45;opacity:0;transform:translateY(18px);
+  transition:all .9s ease .62s}
+.scene.on .kicker,.scene.on h1,.scene.on .sub{opacity:1;transform:none}
+
+/* tal */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:calc(var(--u)*2.2) calc(var(--u)*3);
+  margin-top:calc(var(--u)*2.6)}
+.stat{opacity:0;transform:translateY(20px);transition:all .8s ease}
+.scene.on .stat:nth-child(1){opacity:1;transform:none;transition-delay:.55s}
+.scene.on .stat:nth-child(2){opacity:1;transform:none;transition-delay:.72s}
+.scene.on .stat:nth-child(3){opacity:1;transform:none;transition-delay:.89s}
+.scene.on .stat:nth-child(4){opacity:1;transform:none;transition-delay:1.06s}
+.stat .v{font-family:'Space Grotesk',monospace;font-size:calc(var(--u)*3.5);font-weight:700;
+  letter-spacing:-.03em;line-height:1;color:var(--text)}
+.stat .v.g{color:var(--green)}
+.stat .l{font-size:calc(var(--u)*.95);color:var(--muted);margin-top:calc(var(--u)*.6);
+  text-transform:uppercase;letter-spacing:.08em;font-weight:700;line-height:1.3}
+
+/* telefoner */
+.phones{display:flex;gap:calc(var(--u)*1.6);justify-content:center;align-items:center;
+  margin-top:calc(var(--u)*2.4)}
+.phones img{width:calc(var(--u)*11);border-radius:calc(var(--u)*1.3);
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 calc(var(--u)*2) calc(var(--u)*4) rgba(0,0,0,.6);
+  opacity:0;transform:translateY(26px)}
+.scene.on .phones img{opacity:1;transform:none;transition:all .85s ease}
+.scene.on .phones img:nth-child(1){transition-delay:.5s}
+.scene.on .phones img:nth-child(2){transition-delay:.66s}
+.scene.on .phones img:nth-child(3){transition-delay:.82s}
+
+/* video */
+#film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.filmveil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,8,12,.42) 0%,transparent 30%,transparent 62%,rgba(7,8,12,.88) 100%)}
+.filmtext{position:absolute;left:6vw;bottom:7vh;z-index:3}
+.filmtext .a{font-family:'Space Grotesk',monospace;font-size:calc(var(--u)*1.05);
+  letter-spacing:calc(var(--u)*.14);text-transform:uppercase;color:var(--accent)}
+.filmtext .b{font-size:calc(var(--u)*2.7);font-weight:900;margin-top:calc(var(--u)*.5);letter-spacing:-.02em}
+
+/* slut */
+.slut{text-align:center;width:auto}
+.slut .mark{font-family:'Space Grotesk',monospace;font-size:calc(var(--u)*5.2);font-weight:700;
+  letter-spacing:-.03em;background:linear-gradient(100deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.slut .u{font-size:calc(var(--u)*1.6);color:var(--muted);margin-top:calc(var(--u)*1.2);
+  letter-spacing:.16em;text-transform:uppercase}
+
+/* fremdriftslinje, saa man kan se at skaermen lever */
+#bar{position:fixed;left:0;bottom:0;height:3px;z-index:9;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2))}
+#logo{position:fixed;top:calc(var(--u)*2);right:calc(var(--u)*2.4);z-index:9;
+  font-family:'Space Grotesk',monospace;font-size:calc(var(--u)*1.15);font-weight:700;
+  letter-spacing:.13em;color:rgba(255,255,255,.42)}
+#start{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+  background:var(--bg);cursor:pointer}
+#start div{text-align:center}
+#start .t{font-size:calc(var(--u)*2.4);font-weight:800}
+#start .s{font-size:calc(var(--u)*1.2);color:var(--muted);margin-top:calc(var(--u)*.9)}
+</style>
+</head>
+<body>
+
+<div id="logo">LIVECLOUD</div>
+<div id="bar"></div>
+
+<!-- 1 · aftermovie -->
+<div class="scene" data-t="film">
+  <video id="film" muted playsinline preload="auto" src="video/aftermovie.mp4"></video>
+  <div class="filmveil"></div>
+  <div class="filmtext">
+    <div class="a">Ringsted Festival 2026</div>
+    <div class="b">Hele festivalen kørte på LiveCloud.</div>
+  </div>
+</div>
+
+<!-- 2 · krogen -->
+<div class="scene" data-t="8500" data-bg="photos/photo-festival.webp" style="--dx:-2%;--dy:-1%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Bevist i drift</div>
+    <h1>Billetter, adgang, betaling og regnskab.<br><em>Ét system.</em></h1>
+    <div class="sub">Ikke et pilotprojekt ved siden af noget andet. Hele festivalen, fra første billet til færdig afregning.</div>
+  </div>
+</div>
+
+<!-- 3 · tallene -->
+<div class="scene" data-t="9500" data-bg="photos/photo-bar.webp" style="--dx:1%;--dy:-2%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Ringsted Festival 2026</div>
+    <h1>Det, platformen leverede.</h1>
+    <div class="stats">
+      <div class="stat"><div class="v g">+23,6 %</div><div class="l">Vækst i bar- og madsalg</div></div>
+      <div class="stat"><div class="v">26.000+</div><div class="l">Gæster gennem gates</div></div>
+      <div class="stat"><div class="v">73</div><div class="l">Barer og boder</div></div>
+      <div class="stat"><div class="v g">100 %</div><div class="l">Automatisk afstemt</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · billetten -->
+<div class="scene" data-t="8000" data-bg="photos/photo-checkin.webp" style="--dx:-1%;--dy:1%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Billetten</div>
+    <h1>Ligger på profilen.<br><em>Ikke i en PDF.</em></h1>
+    <div class="sub">Derfor kan en partout deles op, en enkelt dag gives videre på dagen, og billetten sælges igen inde i jeres egen app.</div>
+  </div>
+</div>
+
+<!-- 5 · baren -->
+<div class="scene" data-t="8000" data-bg="photos/photo-pos.webp" style="--dx:2%;--dy:0%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Køen</div>
+    <h1>Under tre sekunder <em>pr. handel.</em></h1>
+    <div class="sub">Ingen kort, ingen PIN, ingen rundtur gennem banken for hvert køb. Saldoen er tanket op i forvejen.</div>
+  </div>
+</div>
+
+<!-- 6 · appen -->
+<div class="scene" data-t="9000">
+  <div class="inner" style="text-align:center;margin:0 auto">
+    <div class="kicker" style="text-align:center">Gæstens app</div>
+    <h1 style="text-align:center">Jeres app. Jeres brand.<br><em>Jeres gæster.</em></h1>
+    <div class="phones">
+      <img src="images/app-ringsted-velkommen.webp" alt="Velkommen-skærmen i festivalappen">
+      <img src="images/app-ringsted-beats.webp" alt="Beats-saldo og optankning i appen">
+      <img src="images/app-ringsted-map.webp" alt="Festivalkortet i appen">
+    </div>
+  </div>
+</div>
+
+<!-- 7 · porten -->
+<div class="scene" data-t="8000" data-bg="photos/photo-gate.webp" style="--dx:-2%;--dy:1%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Adgangen</div>
+    <h1>Samme enhed i baren <em>og ved porten.</em></h1>
+    <div class="sub">I dag lejer festivalen to slags udstyr af to leverandører. Hos os er begge dele med i prisen.</div>
+  </div>
+</div>
+
+<!-- 8 · regnskabet -->
+<div class="scene" data-t="8000" data-bg="photos/photo-transfer.webp" style="--dx:1%;--dy:-1%">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Bagefter</div>
+    <h1>Regnskabet stemte.<br><em>Post for post.</em></h1>
+    <div class="sub">Tre dage fra sidste salg til færdig afregning, afstemt mod bank og indløser. Ubrugte Beats blev betalt tilbage automatisk.</div>
+  </div>
+</div>
+
+<!-- 9 · slut -->
+<div class="scene" data-t="6500">
+  <div class="inner slut">
+    <div class="mark">LiveCloud</div>
+    <div class="u">livecloud.dk</div>
+  </div>
+</div>
+
+<div id="start"><div>
+  <div class="t">Tryk for at starte</div>
+  <div class="s">Skærmvisningen kører derefter i loop af sig selv</div>
+</div></div>
+
+<script>
+(function () {
+  var scener = [].slice.call(document.querySelectorAll('.scene'));
+  var film = document.getElementById('film');
+  var bar = document.getElementById('bar');
+  var i = -1, timer = null, raf = null, vagt = null;
+
+  // Forudindlaes alle baggrunde, saa der aldrig blinker en tom scene.
+  scener.forEach(function (s) {
+    var u = s.getAttribute('data-bg');
+    if (!u) return;
+    var img = new Image(); img.src = u;
+    s.querySelector('.bg').style.backgroundImage = 'url(' + u + ')';
+  });
+
+  function fremdrift(ms) {
+    var t0 = performance.now();
+    cancelAnimationFrame(raf);
+    (function tik(nu) {
+      var p = Math.min(1, (nu - t0) / ms);
+      bar.style.width = (p * 100) + '%';
+      if (p < 1) raf = requestAnimationFrame(tik);
+    })(t0);
+  }
+
+  function naeste() {
+    clearTimeout(timer);
+    if (i >= 0) scener[i].classList.remove('on');
+    i = (i + 1) % scener.length;
+    var s = scener[i];
+    s.classList.add('on');
+
+    if (s.getAttribute('data-t') === 'film') {
+      // Videoen bestemmer selv laengden. Men en storskaerm skal aldrig
+      // staa med et frosset billede, saa vi tjekker efter to sekunder,
+      // om den faktisk spiller, og springer videre hvis ikke. Browsere
+      // standser ogsaa video-uden-lyd for at spare stroem, naar siden
+      // ryger i baggrunden.
+      try { film.currentTime = 0; } catch (e) {}
+      var p = film.play();
+      if (p && p.catch) p.catch(function () {});
+      var ms = (film.duration && isFinite(film.duration) ? film.duration : 40) * 1000;
+      fremdrift(ms);
+      film.onended = naeste;
+      timer = setTimeout(naeste, ms + 1200);
+      clearTimeout(vagt);
+      vagt = setTimeout(function () {
+        if (i !== 0) return;
+        if (film.paused || film.currentTime < 0.3 || film.error) naeste();
+      }, 2200);
+      return;
+    }
+    clearTimeout(vagt);
+    film.pause();
+    var ms2 = +s.getAttribute('data-t') || 8000;
+    fremdrift(ms2);
+    timer = setTimeout(naeste, ms2);
+  }
+
+  function start() {
+    var d = document.getElementById('start');
+    if (d) d.remove();
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen().catch(function () {});
+    }
+    // Hold skaermen vaagen, saa den ikke sover midt i loopet.
+    if ('wakeLock' in navigator) {
+      var laas = function () { navigator.wakeLock.request('screen').catch(function () {}); };
+      laas();
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') laas();
+      });
+    }
+    naeste();
+  }
+
+  document.getElementById('start').addEventListener('click', start);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') return;
+    if (document.getElementById('start')) start();
+    else if (e.key === 'ArrowRight') naeste();
+  });
+
+  // Nogle browsere tillader autoplay uden lyd. Virker det, springer vi
+  // startskaermen over helt, saa en skaerm kan aabne siden og koere.
+  film.play().then(function () {
+    film.pause();
+    start();
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
