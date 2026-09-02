@@ -126,6 +126,16 @@ section{position:relative}
 .sec-head{max-width:56ch;margin-bottom:14px}
 .sec-head .eyebrow{margin-bottom:16px;display:block}
 .sec-sub{color:var(--muted);font-size:18px;max-width:52ch;margin-top:16px}
+/* ---- proof strip ---- */
+.proofband{background:linear-gradient(180deg,var(--ground),#0e1428);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proofgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:38px}
+.stat-big{text-align:center;padding:26px 12px;border-radius:16px;background:linear-gradient(160deg,var(--raised),#0e1428);border:1px solid var(--line)}
+.stat-big b{display:block;font-family:Raleway;font-weight:900;font-size:clamp(30px,3.3vw,46px);line-height:1;letter-spacing:-.02em;
+  background:linear-gradient(105deg,var(--pink),var(--indigo) 55%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-big span{display:block;margin-top:10px;font-size:12.5px;color:var(--muted);font-family:Raleway;font-weight:600;letter-spacing:.02em;line-height:1.35}
+.proofnote{margin-top:22px;font-size:13px;color:var(--dim);font-family:Raleway;font-weight:600;letter-spacing:.02em}
+@media (max-width:900px){.proofgrid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.proofgrid{grid-template-columns:repeat(2,1fr)}}
 
 /* ---- surface rows ---- */
 .surface{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
@@ -678,6 +688,22 @@ section{position:relative}
       <button class="fbtn deck-next" aria-label="Next">›</button>
     </div>
   </div>
+</div></section>
+
+<!-- PROOF -->
+<section class="band proofband"><div class="wrap reveal">
+  <div class="sec-head">
+    <span class="eyebrow">Proven in production</span>
+    <h2>It has run a full festival</h2>
+  </div>
+  <div class="proofgrid">
+    <div class="stat-big"><b>26,000+</b><span>guests</span></div>
+    <div class="stat-big"><b>30,000+</b><span>active users</span></div>
+    <div class="stat-big"><b>73</b><span>bars and stalls</span></div>
+    <div class="stat-big"><b>100 %</b><span>reconciliation</span></div>
+    <div class="stat-big"><b>3 days</b><span>from last sale to settlement</span></div>
+  </div>
+  <p class="proofnote">Measured at a real festival, not an estimate.</p>
 </div></section>
 
 <!-- CLOSE -->
