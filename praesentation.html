@@ -725,26 +725,33 @@ section{position:relative}
 document.querySelectorAll('.jsdeck').forEach(function(deck){
   var track=deck.querySelector('.ftrack'), dotsWrap=deck.querySelector('.fdots');
   var n=track.children.length, i=0, dots=[];
-  for(var k=0;k<n;k++){(function(k){var d=document.createElement('button');d.className='fdot';d.setAttribute('aria-label','Slide '+(k+1)+' af '+n);d.addEventListener('click',function(){go(k);bump()});dotsWrap.appendChild(d);dots.push(d);})(k);}
+  for(var k=0;k<n;k++){(function(k){var d=document.createElement('button');d.className='fdot';d.setAttribute('aria-label','Slide '+(k+1)+' af '+n);d.addEventListener('click',function(){go(k);userHold()});dotsWrap.appendChild(d);dots.push(d);})(k);}
   function go(t){i=(t+n)%n;track.style.transform='translateX('+(-i*100)+'%)';dots.forEach(function(d,x){d.classList.toggle('on',x===i)});}
-  deck.querySelector('.deck-prev').addEventListener('click',function(){go(i-1);bump()});
-  deck.querySelector('.deck-next').addEventListener('click',function(){go(i+1);bump()});
-  deck.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1);bump();e.preventDefault()}else if(e.key==='ArrowRight'){go(i+1);bump();e.preventDefault()}});
+  deck.querySelector('.deck-prev').addEventListener('click',function(){go(i-1);userHold()});
+  deck.querySelector('.deck-next').addEventListener('click',function(){go(i+1);userHold()});
+  deck.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1);userHold();e.preventDefault()}else if(e.key==='ArrowRight'){go(i+1);userHold();e.preventDefault()}});
   go(0);
 
-  // autoplay while the deck is on screen; pause on hover/focus so slides can be read
+  // autoplay while on screen; a play/pause control pauses and resumes, also on touch
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timer=null,visible=false,held=false,DELAY=5000;
-  function start(){ if(timer||reduce||held||!visible||n<2) return; timer=setInterval(function(){go(i+1)},DELAY); }
+  var timer=null,visible=false,hovering=false,userPaused=false,DELAY=6800;
+  var PAUSE='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  var PLAY='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var pp=document.createElement('button'); pp.type='button'; pp.className='fbtn deck-pp';
+  var nav=deck.querySelector('.fnav'); nav.insertBefore(pp,nav.firstChild);
+  if(reduce||n<2){ pp.style.display='none'; }
+  function activeNow(){ return visible&&!userPaused&&!hovering&&!reduce&&n>1; }
+  function start(){ if(!timer&&activeNow()){ timer=setInterval(function(){go(i+1)},DELAY); } }
   function stop(){ if(timer){clearInterval(timer);timer=null;} }
-  function bump(){ stop(); start(); }
-  function hold(v){ held=v; if(v){stop();}else{start();} }
-  deck.addEventListener('mouseenter',function(){hold(true)});
-  deck.addEventListener('mouseleave',function(){hold(false)});
-  deck.addEventListener('focusin',function(){hold(true)});
-  deck.addEventListener('focusout',function(){if(!deck.contains(document.activeElement))hold(false)});
-  var vio=new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;visible?start():stop();})},{threshold:0.4});
+  function render(){ var playing=!userPaused; pp.innerHTML=playing?PAUSE:PLAY; pp.setAttribute('aria-label',playing?'Sæt på pause':'Afspil'); }
+  function sync(){ if(activeNow())start(); else stop(); render(); }
+  function userHold(){ userPaused=true; sync(); }
+  pp.addEventListener('click',function(){ userPaused=!userPaused; sync(); });
+  deck.addEventListener('mouseenter',function(){hovering=true;stop();});
+  deck.addEventListener('mouseleave',function(){hovering=false;start();});
+  var vio=new IntersectionObserver(function(es){es.forEach(function(e){visible=e.isIntersecting;sync();})},{threshold:0.4});
   vio.observe(deck);
+  render();
 });
 </script>
 
