@@ -734,7 +734,7 @@ document.querySelectorAll('.jsdeck').forEach(function(deck){
 
   // autoplay while on screen; a play/pause control pauses and resumes, also on touch
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timer=null,visible=false,hovering=false,userPaused=false,DELAY=6800;
+  var timer=null,visible=false,hovering=false,userPaused=false,DELAY=6000;
   var PAUSE='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
   var PLAY='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
   var pp=document.createElement('button'); pp.type='button'; pp.className='fbtn deck-pp';
