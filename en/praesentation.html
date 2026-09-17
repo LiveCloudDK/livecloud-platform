@@ -342,6 +342,15 @@ section{position:relative}
   .ftrack,.fbtn,.fdot{transition:none!important}
   html{scroll-behavior:auto}
 }
+
+  /* personlig hilsen (billede af Jakob) */
+  .personband{text-align:center;padding:78px 0}
+  .perso-quote{font-size:26px;font-weight:800;line-height:1.32;max-width:680px;margin:0 auto;color:var(--ink);letter-spacing:-.3px}
+  .perso-quote strong{color:var(--pink)}
+  .perso-soft{display:block;font-size:16px;font-weight:400;font-style:italic;color:var(--muted);max-width:540px;margin:16px auto 0;letter-spacing:0}
+  .perso-portrait{display:block;width:104px;height:104px;margin:34px auto 14px;border-radius:50%;object-fit:cover;border:2px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+  .perso-name{display:block;color:var(--ink);font-weight:700;font-size:16px}
+  .perso-title{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 </style>
 <style>
 .langtoggle{position:fixed;top:24px;right:28px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -704,6 +713,13 @@ section{position:relative}
     <div class="stat-big"><b>3 days</b><span>from last sale to settlement</span></div>
   </div>
   <p class="proofnote">Measured at a real festival, not an estimate.</p>
+</div></section>
+
+<!-- PERSONLIG -->
+<section class="band personband"><div class="wrap reveal">
+  <p class="perso-quote">The best system is the one <strong>nobody notices</strong>.<span class="perso-soft">When the festival just flows, when the guests are just present, when the accounts just balance.</span></p>
+  <picture><source srcset="../jakob.webp" type="image/webp"><img class="perso-portrait" src="../jakob.jpg" alt="Jakob Højgård" width="600" height="600" loading="lazy" decoding="async"></picture>
+  <span class="perso-name">Jakob Højgård</span><span class="perso-title">CEO, LiveCloud</span>
 </div></section>
 
 <!-- CLOSE -->
