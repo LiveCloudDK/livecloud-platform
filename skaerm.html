@@ -115,12 +115,27 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--ac
   color:var(--text);margin-bottom:calc(var(--u)*2.4)}
 #start .t{font-size:calc(var(--u)*2.4);font-weight:800}
 #start .s{font-size:calc(var(--u)*1.2);color:var(--muted);margin-top:calc(var(--u)*.9)}
+/* sprogvalg: ses paa foerste scene, og naar nogen roerer mus eller skaerm.
+   En skaerm paa en stand faar aldrig input, saa der holder loopet sig rent. */
+#sprog{position:fixed;top:calc(var(--u)*4.4);right:calc(var(--u)*1.7);z-index:21;
+  display:flex;align-items:center;gap:calc(var(--u)*.2);
+  font-size:max(12px,calc(var(--u)*.95));font-weight:800;letter-spacing:.14em;
+  opacity:0;pointer-events:none;transition:opacity .5s ease}
+body.foerst #sprog,body.mus #sprog,#sprog:focus-within{opacity:1;pointer-events:auto}
+body.mus{cursor:auto}
+#sprog a{color:rgba(255,255,255,.55);text-decoration:none;cursor:pointer;
+  padding:max(8px,calc(var(--u)*.45)) max(10px,calc(var(--u)*.7));
+  border-radius:calc(var(--u)*.6);transition:color .2s,background .2s}
+#sprog a:hover{color:var(--text)}
+#sprog a.on{color:var(--text);background:rgba(199,123,255,.22)}
+#sprog span{color:rgba(255,255,255,.3)}
 </style>
 </head>
-<body>
+<body class="foerst">
 
 <div id="logo"><svg class="lm" aria-hidden="true" viewBox="0 0 2930 2404" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1464.89 0L2203.33 1211.81H1460.89L1104.91 1795.64H2559.3L2929.77 2404H0L1464.89 0Z" fill="currentColor"/></svg><svg class="lw" aria-hidden="true" viewBox="0 0 696 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M72.9961 0.0556918V108.336H99.9075V0.0556918H72.9961Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M0 0.00351868V108.477H65.1899V86.9073H16.0906L27.4496 78.2635V0.00351868H0Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M106.426 0.0697841L134.333 108.406H164.514L194.992 0.150117H167.31C166.225 0.150117 166.265 2.78502 166.129 3.45178C165.414 6.91412 164.466 10.3282 163.767 13.7986C160.739 28.877 156.706 43.7305 153.742 58.825C152.938 62.9139 151.854 66.9547 151.211 71.0838C151.107 71.7826 151.099 74.8112 149.902 74.6987C149.026 74.6103 148.922 72.0397 148.809 71.4051C148.199 67.9186 147.652 64.4242 147.058 60.9458C144.487 45.8995 141.242 31.0058 138.414 16.0158C137.635 11.9108 136.783 7.82991 135.964 3.72491C135.9 3.39555 135.362 0.0697841 135.209 0.0697841H106.426Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M200.652 0.129095V108.297H268.565V86.9364H227.443V63.3428H263.689V42.3198H227.451V21.7707H267.634V0.129095H200.652Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M287.348 0.149C281.459 0.149 276.688 5.05732 276.688 11.1064V97.0381C276.688 103.336 282.255 108.445 289.131 108.445H341.283C348.457 108.445 354.265 103.698 354.265 97.8414V72.4563L327.393 68.6245V87.1492H304.651V21.646H327.305V39.1264L354.056 32.8925V11.0019C354.056 5.00912 349.059 0.149 342.898 0.149H287.348Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M364.129 0.0932216V108.43H428.997V86.9568H380.011L391.442 77.9274V0.0932216H364.129Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M446.757 0.11466C440.732 0.11466 435.855 5.33628 435.855 11.7709V96.329C435.855 103.061 441.848 108.523 449.247 108.523H502.997C509.657 108.523 515.063 102.836 515.063 95.8229V12.1244C515.063 5.48891 509.593 0.11466 502.853 0.11466H446.757ZM487.638 21.8526V87.0586H463.626V21.8526H487.638Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M526.984 0.133817V97.3442C526.984 103.458 531.917 108.414 537.998 108.414H592.343C599.171 108.414 604.706 103.136 604.706 96.6293V0.157917H577.706V87.0456H554.193V0.133817H526.984Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M617 0.160566V22.5974H668.011V86.9519H644.779V24.4612L617.096 35.6194V108.32H683.66C690.456 108.32 695.967 103.147 695.967 96.7685V11.6803C695.967 5.31792 691.01 0.160566 684.881 0.160566H617Z" fill="currentColor"/></svg></div>
 <div id="bar"></div>
+<nav id="sprog" aria-label="Sprog"><a href="/skaerm" class="on" hreflang="da" aria-current="true">DA</a><span aria-hidden="true">·</span><a href="/en/skaerm" hreflang="en" aria-label="Switch to English">EN</a></nav>
 
 <!-- 1 · aftermovie -->
 <img id="rf" src="images/ringsted-festival-logo.svg" alt="" aria-hidden="true">
@@ -254,6 +269,7 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--ac
   var rf = document.getElementById('rf');
   var bar = document.getElementById('bar');
   var i = -1, timer = null, raf = null, vagt = null;
+  var foerst = true, begyndt = 0;
 
   // Forudindlaes alle baggrunde, saa der aldrig blinker en tom scene.
   scener.forEach(function (s) {
@@ -278,6 +294,14 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--ac
     if (i >= 0) scener[i].classList.remove('on');
     i = (i + 1) % scener.length;
     var s = scener[i];
+    // Sprogvalget hoerer til foerste scene i foerste omgang, ikke til hvert loop.
+    // Det bliver dog staaende i mindst 12 sekunder, saa det ikke forsvinder med
+    // det samme, hvis filmen ikke vil spille og scenen bliver sprunget over.
+    if (i !== 0 && foerst) {
+      foerst = false;
+      setTimeout(function () { document.body.classList.remove('foerst'); },
+        Math.max(0, 12000 - (performance.now() - begyndt)));
+    }
     s.classList.add('on');
 
     // Ringsted-maerket hoerer kun til aftermovien, ikke til klippene.
@@ -328,6 +352,7 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--ac
   function start() {
     var d = document.getElementById('start');
     if (d) d.remove();
+    begyndt = performance.now();
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(function () {});
     }
@@ -344,10 +369,22 @@ h1 em{font-style:normal;background:linear-gradient(100deg,var(--accent),var(--ac
 
   document.getElementById('start').addEventListener('click', start);
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') return;
+    if (e.key === 'Escape' || e.key === 'Tab') return;
+    // Enter paa sprogvalget skal skifte side, ikke starte loopet.
+    if (e.target.closest && e.target.closest('#sprog')) return;
     if (document.getElementById('start')) start();
     else if (e.key === 'ArrowRight') naeste();
   });
+
+  // Mus eller finger viser markoer og sprogvalg i tre sekunder.
+  var mus = null;
+  function roer() {
+    document.body.classList.add('mus');
+    clearTimeout(mus);
+    mus = setTimeout(function () { document.body.classList.remove('mus'); }, 3000);
+  }
+  document.addEventListener('mousemove', roer);
+  document.addEventListener('touchstart', roer, { passive: true });
 
   // Nogle browsere tillader autoplay uden lyd. Virker det, springer vi
   // startskaermen over helt, saa en skaerm kan aabne siden og koere.
