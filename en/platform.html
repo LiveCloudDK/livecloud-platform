@@ -2004,6 +2004,12 @@
   @media (max-width: 360px) {
     .stat-number { font-size: 20px; }
   }
+/* ==== feature list ==== */
+.featurelist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.featurelist .outcome-box ul { gap: 10px; }
+@media (max-width: 900px) { .featurelist { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .featurelist { grid-template-columns: 1fr; } }
+/* ==== /feature list ==== */
 </style>
   <!-- BACKUP: The complete page with all content. Kept as the source for the subpages and as a backup from when the front page was simplified on 19 August 2026. -->
   <meta name="robots" content="noindex, nofollow">
@@ -2337,6 +2343,87 @@
       </div>
     </div>
   </div>
+
+  <!-- ==== FEATURE LIST ==== -->
+  <div class="section" id="features">
+    <div class="section-label">Feature list</div>
+    <h2 class="section-title">Everything the platform does.</h2>
+    <p class="section-lead">The whole list in one place. It all runs on the same profile, the same balance and the same books, and the list keeps growing.</p>
+    <div class="featurelist">
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Tickets and sales</div>
+        <ul>
+          <li>Ticket sales in your own webshop</li>
+          <li>Sales in both webshop and app</li>
+          <li>Digital ticket on the guest’s profile</li>
+          <li>Multi-day tickets split into single days</li>
+          <li>Transfer to another guest</li>
+          <li>Resale between verified guests</li>
+          <li>Camping with a choice of pitch</li>
+          <li>Festival+ membership</li>
+          <li>B2B sales with invoicing</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Payment on site</div>
+        <ul>
+          <li>Beats, the festival’s own currency</li>
+          <li>Automatic top-up</li>
+          <li>POS for bars and stalls</li>
+          <li>Pay with wristband or phone</li>
+          <li>Pre-order food and drinks</li>
+          <li>Deposits paid back to Beats</li>
+          <li>Cloakroom in the app</li>
+          <li>Unused balance refunded</li>
+          <li>Receipts and purchase history</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Access and identity</div>
+        <ul>
+          <li>Identity verified with MitID</li>
+          <li>Scanning at the gate, in and out</li>
+          <li>Chip wristbands</li>
+          <li>Tickets in Apple Wallet and Google Wallet</li>
+          <li>Zones and access rights on the wristband</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">The guest app</div>
+        <ul>
+          <li>Your name, colours and design</li>
+          <li>Programme and set times</li>
+          <li>Site map</li>
+          <li>Artists and favourites</li>
+          <li>Messages and notifications</li>
+          <li>Groups and chat</li>
+          <li>Stalls and menus</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Staffing and accreditation</div>
+        <ul>
+          <li>Accreditation for crew, artists and press</li>
+          <li>Wristbands for crew and partners</li>
+          <li>Spending cap per wristband</li>
+          <li>Payroll export</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Operations and finance</div>
+        <ul>
+          <li>One catalogue for products and prices</li>
+          <li>Sales and guests on site, live</li>
+          <li>Crowd heatmaps</li>
+          <li>Dashboards per bar, hour and product</li>
+          <li>Stock and stock counts</li>
+          <li>Reconciliation against bank and acquirer</li>
+          <li>Export to accounting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- ==== /FEATURE LIST ==== -->
 
   <!-- ==== BEATS DEDICATED ==== -->
   <div class="section" id="beats">

@@ -2003,6 +2003,12 @@
   @media (max-width: 360px) {
     .stat-number { font-size: 20px; }
   }
+/* ==== feature list ==== */
+.featurelist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.featurelist .outcome-box ul { gap: 10px; }
+@media (max-width: 900px) { .featurelist { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .featurelist { grid-template-columns: 1fr; } }
+/* ==== /feature list ==== */
 </style>
   <!-- BACKUP: Den komplette side med alt indhold. Bevaret som kilde til undersiderne og som backup, da forsiden blev forenklet 19. august 2026. -->
   <meta name="robots" content="noindex, nofollow">
@@ -2336,6 +2342,87 @@
       </div>
     </div>
   </div>
+
+  <!-- ==== FEATURE LIST ==== -->
+  <div class="section" id="featureliste">
+    <div class="section-label">Alle funktioner</div>
+    <h2 class="section-title">Det kan den også.</h2>
+    <p class="section-lead">Her er hele listen samlet ét sted. Alt kører på én profil, én saldo og ét regnskab, og der kommer stadig mere til.</p>
+    <div class="featurelist">
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Billetter og salg</div>
+        <ul>
+          <li>Webshop på jeres eget domæne</li>
+          <li>Salg i webshop og app</li>
+          <li>Billetten ligger på gæstens profil</li>
+          <li>Flerdagesbillet kan deles i enkeltdage</li>
+          <li>Billetten kan overdrages til en anden</li>
+          <li>Gensalg mellem gæster, bekræftet med MitID</li>
+          <li>Camping, hvor gæsten selv vælger plads</li>
+          <li>Festival+: medlemskab med billet hvert år</li>
+          <li>B2B-salg til virksomheder på faktura</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Betaling på pladsen</div>
+        <ul>
+          <li>Beats, festivalens egen valuta</li>
+          <li>Automatisk optankning af Beats</li>
+          <li>POS til barer og boder</li>
+          <li>Betal med armbånd eller telefon</li>
+          <li>Forudbestil i appen, hent i boden</li>
+          <li>Pant på profilen, udbetalt i Beats</li>
+          <li>Garderobe med bøjlenummer i appen</li>
+          <li>Ubrugt saldo betales tilbage efter festivalen</li>
+          <li>Kvitteringer og købshistorik i appen</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Adgang og identitet</div>
+        <ul>
+          <li>Gæstens identitet bekræftet med MitID</li>
+          <li>Scanning ved indgangen, ind og ud</li>
+          <li>Chiparmbånd</li>
+          <li>Billet i Apple Wallet og Google Wallet</li>
+          <li>Zoner og adgangsrettigheder på armbåndet</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Gæstens app</div>
+        <ul>
+          <li>Jeres eget navn, farver og design</li>
+          <li>Program og spilletider</li>
+          <li>Kort over pladsen</li>
+          <li>Kunstnere og favoritter</li>
+          <li>Beskeder og notifikationer</li>
+          <li>Grupper og chat med venner</li>
+          <li>Boder og menuer</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Bemanding og akkreditering</div>
+        <ul>
+          <li>Akkreditering af crew, artister og presse</li>
+          <li>Armbånd til crew og samarbejdspartnere</li>
+          <li>Forbrugsloft pr.&nbsp;armbånd</li>
+          <li>Løn samlet og sendt til lønsystemet</li>
+        </ul>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-eyebrow">Drift og økonomi</div>
+        <ul>
+          <li>Ét katalog til produkter og priser</li>
+          <li>Salg og gæster på pladsen, live</li>
+          <li>Heatmaps over trængsel</li>
+          <li>Dashboards pr.&nbsp;bar, time og produkt</li>
+          <li>Lager og optælling</li>
+          <li>Afstemning mod bank og indløser</li>
+          <li>Eksport til regnskabet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- ==== /FEATURE LIST ==== -->
 
   <!-- ==== BEATS DEDICATED ==== -->
   <div class="section" id="beats">
