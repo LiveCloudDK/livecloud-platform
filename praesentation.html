@@ -351,6 +351,12 @@ section{position:relative}
   .perso-portrait{display:block;width:104px;height:104px;margin:34px auto 14px;border-radius:50%;object-fit:cover;border:2px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.45)}
   .perso-name{display:block;color:var(--ink);font-weight:700;font-size:16px}
   .perso-title{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+/* ==== statement sections ==== */
+.pointband{text-align:center}
+.pointband .sec-head{max-width:none;margin:0 auto}
+.pointband h2{font-size:clamp(27px,5.2vw,60px)}
+.pointband .sec-sub{max-width:46ch;margin:20px auto 0}
+/* ==== /statement sections ==== */
 </style>
 <style>
 .langtoggle{position:fixed;top:24px;right:28px;z-index:60;display:flex;align-items:center;gap:6px;
@@ -375,7 +381,7 @@ section{position:relative}
   <div class="hero-copy">
     <span class="eyebrow">Festivalplatform</span>
     <h1>Gæsten<br>er altid<br>i <span class="grad">centrum</span></h1>
-    <p class="lede">Én verificeret gæst i midten. Billetsalg, app, betaling og adgang samles om den samme person. Og hver flade bærer festivalens eget brand.</p>
+    <p class="lede">LiveCloud samler gæsten, salget og driften ét&nbsp;sted. Fra billetten og porten til Beats i baren og tallene, mens det sker.</p>
     <p class="tag">Billetsalg · App · Betaling · Adgang · Bemanding · Afregning</p>
   </div>
   <div class="const" id="const">
@@ -619,6 +625,16 @@ section{position:relative}
   </div>
 </div></section>
 
+<!-- + salg -->
+<section class="band pointband"><div class="wrap reveal">
+  <div class="sec-head">
+    <span class="eyebrow">Én billet</span>
+    <h2>Købt på nettet<br><span class="grad">Gælder ved porten</span></h2>
+    <p class="sec-sub">Billetten, der købes i webshop eller app, er den, der scannes ved porten. Ændrer I en pris ét sted, er den ændret i webshoppen, i appen og på terminalerne med det samme.</p>
+  </div>
+</div></section>
+<!-- /+ salg -->
+
 <!-- BRANDED -->
 <section class="band brandband"><div class="wrap reveal">
   <div class="sec-head">
@@ -738,6 +754,16 @@ section{position:relative}
   </div>
 </div></section>
 
+<!-- + drift -->
+<section class="band pointband"><div class="wrap reveal">
+  <div class="sec-head">
+    <span class="eyebrow">Driften</span>
+    <h2>Tallene, mens det sker<br><span class="grad">Ikke en rapport bagefter</span></h2>
+    <p class="sec-sub">Salg, forbrug i barerne, antal gæster på pladsen og trængslen vist på et kort. Ledelse, barer og beredskab kan handle på det undervejs.</p>
+  </div>
+</div></section>
+<!-- /+ drift -->
+
 <!-- PROOF -->
 <section class="band proofband"><div class="wrap reveal">
   <div class="sec-head">
@@ -753,6 +779,26 @@ section{position:relative}
   </div>
   <p class="proofnote">Målt på en rigtig festival, ikke et estimat.</p>
 </div></section>
+
+<!-- + plads -->
+<section class="band pointband"><div class="wrap reveal">
+  <div class="sec-head">
+    <span class="eyebrow">Forbindelsen</span>
+    <h2>Går en mobilmast ned<br><span class="grad">fortsætter salget</span></h2>
+    <p class="sec-sub">POS-enhederne kører videre offline, og transaktionerne synkroniseres, når forbindelsen er tilbage. Gæsterne mærker ingenting. Vi er på pladsen under hele afviklingen.</p>
+  </div>
+</div></section>
+<!-- /+ plads -->
+
+<!-- + bag -->
+<section class="band pointband"><div class="wrap reveal">
+  <div class="sec-head">
+    <span class="eyebrow">Bag systemet</span>
+    <h2>Ja om fredagen<br><span class="grad">Ude om mandagen</span></h2>
+    <p class="sec-sub">Beder I om en ændring, taler I med dem, der skriver koden. Der er ingen kontoafdeling imellem. En dansk virksomhed i Ringsted, der kun laver den her platform. Ingen kapitalfond skal have et afkast ud af jeres gæster.</p>
+  </div>
+</div></section>
+<!-- /+ bag -->
 
 <!-- PERSONLIG -->
 <section class="band personband"><div class="wrap reveal">
